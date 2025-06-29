@@ -3,13 +3,22 @@
 # glib-compile-schemas messagingmenu\@lauinger-clan.de/schemas/
 
 cd messagingmenu\@lauinger-clan.de
-gnome-extensions pack --podir=../po/ --out-dir=../ --extra-source=\ui --extra-source=\icons --extra-source=../LICENSE
+gnome-extensions pack --podir=../po/ --out-dir=../ --extra-source=\ui --extra-source=\icons --extra-source=../LICENSE --force
 cd ..
-mv messagingmenu@lauinger-clan.de.shell-extension.zip messagingmenu@lauinger-clan.de.zip
 
-if [ "$1" = "zip" ] || [ "$1" = "pack" ]; then
-   echo "Extension zip created ..."
-else
-   gnome-extensions install messagingmenu\@lauinger-clan.de.zip --force
-   gnome-extensions enable messagingmenu\@lauinger-clan.de
-fi
+case "$1" in
+  zip|pack)
+    echo "Extension zip created ..."
+    ;;
+  install)
+    gnome-extensions install messagingmenu\@lauinger-clan.de.shell-extension.zip --force
+    gnome-extensions enable messagingmenu\@lauinger-clan.de
+    ;;
+  upload)
+    gnome-extensions upload messagingmenu\@lauinger-clan.de.shell-extension.zip
+    ;;
+  *)
+  echo "Usage: $0 {zip|pack|install|upload}"
+    exit 1
+    ;;
+esac
