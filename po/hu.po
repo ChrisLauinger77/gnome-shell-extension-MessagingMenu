@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Messaging Menu Version 4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-24 18:15+0200\n"
+"POT-Creation-Date: 2025-07-26 12:32+0200\n"
 "PO-Revision-Date: 2025-06-01 19:25+0200\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: Hungarian\n"
@@ -32,15 +32,19 @@ msgstr "Kapcsolatok"
 msgid "Settings"
 msgstr "Beállítások"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:27
+#: messagingmenu@lauinger-clan.de/prefs.js:22
+msgid "Search..."
+msgstr ""
+
+#: messagingmenu@lauinger-clan.de/prefs.js:34
 msgid "Select"
 msgstr "Kiválasztás"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:30
+#: messagingmenu@lauinger-clan.de/prefs.js:37
 msgid "Cancel"
 msgstr "Mégse"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:74
+#: messagingmenu@lauinger-clan.de/prefs.js:90
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:55
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:105
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:116
@@ -48,105 +52,105 @@ msgstr "Mégse"
 msgid "Name of .desktop files without .desktop ending"
 msgstr ".desktop fájlok neve .desktop végződés nélkül"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:76
+#: messagingmenu@lauinger-clan.de/prefs.js:92
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:138
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:144
 msgid "Notifier title"
 msgstr "Értesítési cím"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:133
+#: messagingmenu@lauinger-clan.de/prefs.js:149
 msgid "Reset Settings"
 msgstr "Beállítások visszaállítása"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:139
+#: messagingmenu@lauinger-clan.de/prefs.js:155
 msgid "Reset all settings to default values"
 msgstr ""
 
-#: messagingmenu@lauinger-clan.de/prefs.js:172
+#: messagingmenu@lauinger-clan.de/prefs.js:188
 msgid "Found by scan"
 msgstr ""
 
-#: messagingmenu@lauinger-clan.de/prefs.js:174
+#: messagingmenu@lauinger-clan.de/prefs.js:190
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:62
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:100
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:104
 msgid "Email"
 msgstr "Email"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:175
+#: messagingmenu@lauinger-clan.de/prefs.js:191
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:63
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:111
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:115
 msgid "Chat"
 msgstr "Chat"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:176
+#: messagingmenu@lauinger-clan.de/prefs.js:192
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:64
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:122
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:126
 msgid "Micro blogging"
 msgstr "Mikro-blogging"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:177
+#: messagingmenu@lauinger-clan.de/prefs.js:193
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:65
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:137
 msgid "Email notifier"
 msgstr "Email értesítő"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:178
+#: messagingmenu@lauinger-clan.de/prefs.js:194
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:66
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:143
 msgid "Micro blogging notifier"
 msgstr "Mikro-blogging értesítő"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:183
+#: messagingmenu@lauinger-clan.de/prefs.js:199
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:89
 msgid "Add"
 msgstr "Hozzáadás"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:218
+#: messagingmenu@lauinger-clan.de/prefs.js:234
 msgid "Scan finished"
 msgstr ""
 
-#: messagingmenu@lauinger-clan.de/prefs.js:219
+#: messagingmenu@lauinger-clan.de/prefs.js:235
 #, javascript-format
 msgid "Scan found %d app"
 msgid_plural "Scan found %d apps"
 msgstr[0] ""
 msgstr[1] ""
 
-#: messagingmenu@lauinger-clan.de/prefs.js:249
+#: messagingmenu@lauinger-clan.de/prefs.js:265
 msgid "Toggle email notification"
 msgstr "Email értesítés be-/kikapcsolása"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:252
+#: messagingmenu@lauinger-clan.de/prefs.js:268
 msgid "Toggle chat notification"
 msgstr "Chat értesítés be-/kikapcsolása"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:255
+#: messagingmenu@lauinger-clan.de/prefs.js:271
 msgid "Toggle micro blogging notification"
 msgstr "Mikro-blogging értesítés be-/kikapcsolása"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:258
+#: messagingmenu@lauinger-clan.de/prefs.js:274
 #: messagingmenu@lauinger-clan.de/schemas/org.gnome.shell.extensions.messagingmenu.gschema.xml:25
 msgid "Notification Color RGB"
 msgstr "Értesítési szín (RGB)"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:274
+#: messagingmenu@lauinger-clan.de/prefs.js:290
 msgid "Usually located in '/usr/share/applications'"
 msgstr "Általában a '/usr/share/applications' helyen található"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:276
+#: messagingmenu@lauinger-clan.de/prefs.js:292
 msgid "..."
 msgstr "..."
 
-#: messagingmenu@lauinger-clan.de/prefs.js:296
+#: messagingmenu@lauinger-clan.de/prefs.js:312
 msgid ""
 "Scan installed applications for compatible Email and Chat apps (Categories: "
 "Email, Chat)"
 msgstr ""
 
-#: messagingmenu@lauinger-clan.de/prefs.js:352
+#: messagingmenu@lauinger-clan.de/prefs.js:368
 msgid "Select app"
 msgstr "Alkalmazás kiválasztása"
 
