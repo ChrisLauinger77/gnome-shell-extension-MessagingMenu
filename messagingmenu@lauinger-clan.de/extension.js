@@ -1,8 +1,4 @@
-/**
- * Messaging Menu - A Messaging Menu for the Gnome Shell
- * Copyright (C) 2012 Andreas Wilhelm
- * See LICENSE.txt for details
- */
+"use strict";
 
 import Shell from "gi://Shell";
 import Gio from "gi://Gio";
