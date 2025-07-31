@@ -1,24 +1,33 @@
 #!/bin/bash
 
-# glib-compile-schemas messagingmenu\@lauinger-clan.de/schemas/
+extension="messagingmenu@lauinger-clan.de"
+extensionfile=$extension".shell-extension.zip"
 
-cd messagingmenu\@lauinger-clan.de
-gnome-extensions pack --podir=../po/ --out-dir=../ --extra-source=\ui --extra-source=\icons --extra-source=../LICENSE --force
-cd ..
+echo "Running $0 for $extension with arguments: $@"
 
 case "$1" in
   zip|pack)
+    cd $extension
+    gnome-extensions pack --podir=../po/ --out-dir=../ --extra-source=./lib --extra-source=./ui/ --extra-source=./icons/ --extra-source=../LICENSE --force
+    cd ..
     echo "Extension zip created ..."
     ;;
   install)
-    gnome-extensions install messagingmenu\@lauinger-clan.de.shell-extension.zip --force
-    gnome-extensions enable messagingmenu\@lauinger-clan.de
+    if [ ! -f $extensionfile ]; then
+      $0 zip
+    fi
+    gnome-extensions install $extensionfile --force
+    gnome-extensions enable $extension
+    echo "Extension zip installed ..."
     ;;
   upload)
-    gnome-extensions upload messagingmenu\@lauinger-clan.de.shell-extension.zip
+    if [ ! -f $extensionfile ]; then
+      $0 zip
+    fi
+    gnome-extensions upload --user ChrisLauinger77 --password-file /mnt/2TB/dev/ego_password $extensionfile
     ;;
   *)
-  echo "Usage: $0 {zip|pack|install|upload}"
+    echo "Usage: $0 {zip|pack|install|upload}"
     exit 1
     ;;
 esac
