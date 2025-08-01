@@ -1,5 +1,5 @@
 {
-    "shell-version": ["45", "46", "47", "48"],
+    "shell-version": ["48", "49"],
     "uuid": "messagingmenu@lauinger-clan.de",
     "name": "Messaging Menu",
     "original-author": "sinisterstuf",
@@ -11,5 +11,5 @@
         "github": "ChrisLauinger77",
         "paypal": "ChrisLauinger"
     },
-    "version-name": "48.8"
+    "version-name": "49.0"
 }
