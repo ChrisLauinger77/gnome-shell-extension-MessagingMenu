@@ -29,7 +29,7 @@ Originally forked from https://github.com/screenfreeze/messagingmenu
 
 1. Download the zip file from the [release page](https://github.com/ChrisLauinger77/messagingmenu/releases/latest)
 2. The md5 and sig files can be used to verify the integrity of the zip file
-3. Unzip and run install.sh from the zip
+3. Unzip and run messagingmenu.sh from the zip
 
 ### Install from source
 
@@ -38,7 +38,7 @@ Use the `main` branch.
 ```bash
 git clone https://github.com/ChrisLauinger77/gnome-shell-extension-messagingmenu.git
 cd gnome-shell-extension-messagingmenu
-./install.sh
+./messagingmenu.sh install
 ```
 
 Now restart gnome-shell.
