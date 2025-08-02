@@ -29,7 +29,7 @@ Originally forked from https://github.com/screenfreeze/messagingmenu
 
 1. Download the zip file from the [release page](https://github.com/ChrisLauinger77/messagingmenu/releases/latest)
 2. The md5 and sig files can be used to verify the integrity of the zip file
-3. Unzip and run install.sh from the zip
+3. Unzip and run messagingmenu.sh from the zip
 
 ### Install from source
 
@@ -38,7 +38,7 @@ Use the `main` branch.
 ```bash
 git clone https://github.com/ChrisLauinger77/gnome-shell-extension-messagingmenu.git
 cd gnome-shell-extension-messagingmenu
-./install.sh
+./messagingmenu.sh install
 ```
 
 Now restart gnome-shell.
@@ -47,7 +47,7 @@ Now restart gnome-shell.
 
 Pull requests are welcome.
 
-To update the translation files run ./update-translation-po-files.sh in the extensions directory after your code changes are finished. This will update the files in po folder. Then poedit (https://poedit.net/download) can be used to translate the strings. poedit can also be used to create new localization files.
+To update the translation files run `./messagingmenu.sh translate ` in the extensions directory after your code changes are finished. This will update the files in po folder. Then poedit (https://poedit.net/download) can be used to translate the strings. poedit can also be used to create new localization files.
 
 # ✨️ Contributors
 
