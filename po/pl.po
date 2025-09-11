@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Messaging Menu Version 4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-26 12:32+0200\n"
+"POT-Creation-Date: 2025-08-01 15:52+0300\n"
 "PO-Revision-Date: 2025-06-01 19:26+0200\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: Polish\n"
@@ -20,33 +20,33 @@ msgstr ""
 "X-Generator: Poedit 3.6\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: messagingmenu@lauinger-clan.de/extension.js:80
+#: messagingmenu@lauinger-clan.de/extension.js:76
 msgid "Compose New Message"
 msgstr "Napisz nową wiadomość"
 
-#: messagingmenu@lauinger-clan.de/extension.js:81
+#: messagingmenu@lauinger-clan.de/extension.js:77
 msgid "Contacts"
 msgstr "Kontakty"
 
-#: messagingmenu@lauinger-clan.de/extension.js:245
+#: messagingmenu@lauinger-clan.de/extension.js:241
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:5
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:9
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:22
+#: messagingmenu@lauinger-clan.de/prefs.js:24
 msgid "Search..."
 msgstr ""
 
-#: messagingmenu@lauinger-clan.de/prefs.js:34
+#: messagingmenu@lauinger-clan.de/prefs.js:36
 msgid "Select"
 msgstr "Wybierz"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:37
+#: messagingmenu@lauinger-clan.de/prefs.js:39
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:90
+#: messagingmenu@lauinger-clan.de/prefs.js:91
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:55
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:105
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:116
@@ -54,67 +54,67 @@ msgstr "Anuluj"
 msgid "Name of .desktop files without .desktop ending"
 msgstr "Nazwa plików .desktop bez końcówki .desktop"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:92
+#: messagingmenu@lauinger-clan.de/prefs.js:93
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:138
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:144
 msgid "Notifier title"
 msgstr "Tytuł powiadomienia"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:149
+#: messagingmenu@lauinger-clan.de/prefs.js:150
 msgid "Reset Settings"
 msgstr "Przywróć ustawienia"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:155
+#: messagingmenu@lauinger-clan.de/prefs.js:156
 msgid "Reset all settings to default values"
 msgstr ""
 
-#: messagingmenu@lauinger-clan.de/prefs.js:188
+#: messagingmenu@lauinger-clan.de/prefs.js:189
 msgid "Found by scan"
 msgstr ""
 
-#: messagingmenu@lauinger-clan.de/prefs.js:190
+#: messagingmenu@lauinger-clan.de/prefs.js:191
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:62
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:100
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:104
 msgid "Email"
 msgstr "E-mail"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:191
+#: messagingmenu@lauinger-clan.de/prefs.js:192
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:63
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:111
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:115
 msgid "Chat"
 msgstr "Czat"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:192
+#: messagingmenu@lauinger-clan.de/prefs.js:193
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:64
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:122
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:126
 msgid "Micro blogging"
 msgstr "Mikroblogowanie"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:193
+#: messagingmenu@lauinger-clan.de/prefs.js:194
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:65
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:137
 msgid "Email notifier"
 msgstr "Powiadomienie e-mail"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:194
+#: messagingmenu@lauinger-clan.de/prefs.js:195
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:66
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:143
 msgid "Micro blogging notifier"
 msgstr "Powiadomienie mikroblogów"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:199
+#: messagingmenu@lauinger-clan.de/prefs.js:200
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:89
 msgid "Add"
 msgstr "Dodaj"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:234
+#: messagingmenu@lauinger-clan.de/prefs.js:235
 msgid "Scan finished"
 msgstr ""
 
-#: messagingmenu@lauinger-clan.de/prefs.js:235
+#: messagingmenu@lauinger-clan.de/prefs.js:236
 #, javascript-format
 msgid "Scan found %d app"
 msgid_plural "Scan found %d apps"
@@ -122,38 +122,38 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: messagingmenu@lauinger-clan.de/prefs.js:265
+#: messagingmenu@lauinger-clan.de/prefs.js:266
 msgid "Toggle email notification"
 msgstr "Włącz/wyłącz powiadomienia e-mail"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:268
+#: messagingmenu@lauinger-clan.de/prefs.js:269
 msgid "Toggle chat notification"
 msgstr "Włącz/wyłącz powiadomienia czatu"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:271
+#: messagingmenu@lauinger-clan.de/prefs.js:272
 msgid "Toggle micro blogging notification"
 msgstr "Włącz/wyłącz powiadomienia mikroblogów"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:274
+#: messagingmenu@lauinger-clan.de/prefs.js:275
 #: messagingmenu@lauinger-clan.de/schemas/org.gnome.shell.extensions.messagingmenu.gschema.xml:25
 msgid "Notification Color RGB"
 msgstr "Kolor powiadomienia (RGB)"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:290
+#: messagingmenu@lauinger-clan.de/prefs.js:291
 msgid "Usually located in '/usr/share/applications'"
 msgstr "Zazwyczaj znajduje się w '/usr/share/applications'"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:292
+#: messagingmenu@lauinger-clan.de/prefs.js:293
 msgid "..."
 msgstr "..."
 
-#: messagingmenu@lauinger-clan.de/prefs.js:312
+#: messagingmenu@lauinger-clan.de/prefs.js:313
 msgid ""
 "Scan installed applications for compatible Email and Chat apps (Categories: "
 "Email, Chat)"
 msgstr ""
 
-#: messagingmenu@lauinger-clan.de/prefs.js:368
+#: messagingmenu@lauinger-clan.de/prefs.js:369
 msgid "Select app"
 msgstr "Wybierz aplikację"
 
