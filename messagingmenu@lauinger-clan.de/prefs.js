@@ -136,7 +136,7 @@ export default class AdwPrefs extends ExtensionPreferences {
     }
 
     _findWidgetByType(parent, type) {
-        for (const child of [...parent]) {
+        for (const child of parent) {
             if (child instanceof type) return child;
 
             const match = this._findWidgetByType(child, type);
@@ -251,11 +251,11 @@ export default class AdwPrefs extends ExtensionPreferences {
                 "notify-mblogging",
                 "color-rgba",
             ];
-            keys.forEach((key) => {
+            for (const key of keys) {
                 if (settings.is_writable(key)) {
                     settings.reset(key);
                 }
-            });
+            }
         } else if (settings.is_writable(strKey)) {
             settings.reset(strKey);
         }
