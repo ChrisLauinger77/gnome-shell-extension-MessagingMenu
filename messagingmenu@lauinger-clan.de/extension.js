@@ -41,7 +41,7 @@ const MessageMenu = GObject.registerClass(
         _init(Me, intIcon_size) {
             this._settings = Me._settings;
             this._intIcon_size = intIcon_size;
-            super._init(0.0, "MessageMenu");
+            super._init(0, "MessageMenu");
 
             this._compatible_Chats = this._settings.get_string("compatible-chats").split(";").sort();
             this._compatible_MBlogs = this._settings
@@ -426,7 +426,7 @@ export default class MessagingMenu extends Extension {
             let color;
             let strcolor = this._settings.get_string("color-rgba");
             let arrColor = strcolor.replace("rgb(", "").replace(")", "").split(",");
-            color = _rgbToHex(parseInt(arrColor[0]), parseInt(arrColor[1]), parseInt(arrColor[2]));
+            color = _rgbToHex(Number.parseInt(arrColor[0]), Number.parseInt(arrColor[1]), Number.parseInt(arrColor[2]));
             this._iconBox.set_style("color: " + color + ";");
             this._iconChanged = true;
         } else if (!newMessage && this._iconChanged) {
@@ -477,11 +477,11 @@ export default class MessagingMenu extends Extension {
             { key: "compatible-emails", callback: "onParamChanged" },
             { key: "icon-size", callback: "onParamChanged" },
         ];
-        settingsToMonitor.forEach((setting) => {
+        for (const setting of settingsToMonitor) {
             this._settingSignals.push(
                 this._settings.connect(`changed::${setting.key}`, this[setting.callback].bind(this))
             );
-        });
+        }
 
         const statusArea = Main.panel.statusArea;
 
@@ -495,9 +495,9 @@ export default class MessagingMenu extends Extension {
 
     disable() {
         // remove setting Signals
-        this._settingSignals.forEach(function (signal) {
+        for (const signal of this._settingSignals) {
             this._settings.disconnect(signal);
-        }, this);
+        }
         this._settingSignals = null;
         if (this._messageTraySignal !== null) {
             Main.messageTray.disconnect(this._messageTraySignal);
