@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Messaging Menu Version 4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-17 19:54+0100\n"
+"POT-Creation-Date: 2025-11-17 20:03+0100\n"
 "PO-Revision-Date: 2025-09-11 21:56+0300\n"
 "Last-Translator: Fraxinus Acer\n"
 "Language-Team: Russian\n"
@@ -48,15 +48,15 @@ msgstr "Отмена"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:91
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:65
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:123
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:134
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:145
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:125
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:136
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:147
 msgid "Name of .desktop files without .desktop ending"
 msgstr "Имя файлов .desktop без окончания .desktop"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:93
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:156
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:162
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:158
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:164
 msgid "Notifier title"
 msgstr "Заголовок уведомления"
 
@@ -74,39 +74,39 @@ msgstr "Найдено с помощью сканирования"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:191
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:72
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:118
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:122
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:120
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:124
 msgid "Email"
 msgstr "Почта"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:192
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:73
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:129
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:133
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:131
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:135
 msgid "Chat"
 msgstr "Чат"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:193
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:74
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:140
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:144
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:142
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:146
 msgid "Micro blogging"
 msgstr "Микроблог"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:194
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:75
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:155
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:157
 msgid "Email notifier"
 msgstr "Уведомление по электронной почте"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:195
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:76
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:161
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:163
 msgid "Micro blogging notifier"
 msgstr "Уведомление микроблога"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:200
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:107
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:109
 msgid "Add"
 msgstr "Добавить"
 
@@ -124,7 +124,6 @@ msgstr[2] "Сканирование нашло %d приложений"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:356
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:84
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:85
 msgid "Select app"
 msgstr "Выбрать приложение"
 
@@ -183,19 +182,19 @@ msgstr "Добавить меню"
 msgid "Type:"
 msgstr "Тип:"
 
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:90
-msgid "Name:"
-msgstr "Имя:"
-
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:91
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:85
 msgid "Usually located in '/usr/share/applications'"
 msgstr "Обычно находится в '/usr/share/applications'"
 
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:100
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:93
+msgid "Name:"
+msgstr "Имя:"
+
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:102
 msgid "Scan"
 msgstr "Сканировать"
 
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:101
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:103
 msgid ""
 "Scan installed applications for compatible Email and Chat apps (Categories: "
 "Email, Chat)"
@@ -203,7 +202,7 @@ msgstr ""
 "Проверить установленные приложения на наличие совместимых приложений почты и "
 "чатов (категории: Электронная почта, Чат)."
 
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:151
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:153
 msgid "Notifier"
 msgstr "Уведомление"
 
