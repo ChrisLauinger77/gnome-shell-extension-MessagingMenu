@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-01 15:52+0300\n"
+"POT-Creation-Date: 2025-11-17 19:54+0100\n"
 "PO-Revision-Date: 2025-07-26 12:39+0200\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: \n"
@@ -45,16 +45,16 @@ msgid "Cancel"
 msgstr "Abbrechen"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:91
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:55
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:105
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:116
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:127
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:65
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:123
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:134
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:145
 msgid "Name of .desktop files without .desktop ending"
 msgstr "Name der .desktop Datei ohne Dateiendung .desktop"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:93
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:138
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:144
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:156
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:162
 msgid "Notifier title"
 msgstr "Benachrichtigungstitel"
 
@@ -71,40 +71,40 @@ msgid "Found by scan"
 msgstr "Gefunden durch Scannen"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:191
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:62
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:100
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:104
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:72
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:118
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:122
 msgid "Email"
 msgstr "E-Post"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:192
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:63
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:111
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:115
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:73
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:129
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:133
 msgid "Chat"
 msgstr "Chat"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:193
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:64
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:122
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:126
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:74
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:140
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:144
 msgid "Micro blogging"
 msgstr "Mikroblog"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:194
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:65
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:137
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:75
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:155
 msgid "Email notifier"
 msgstr "Epost-Benachrichtigung"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:195
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:66
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:143
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:76
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:161
 msgid "Micro blogging notifier"
 msgstr "Mikroblog-Benachrichtigung"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:200
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:89
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:107
 msgid "Add"
 msgstr "Hinzufügen"
 
@@ -119,40 +119,9 @@ msgid_plural "Scan found %d apps"
 msgstr[0] "Scan hat %d Applikation gefunden"
 msgstr[1] "Scan hat %d Applikationen gefunden"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:266
-msgid "Toggle email notification"
-msgstr "Umschalter Epost-Benachrichtigung"
-
-#: messagingmenu@lauinger-clan.de/prefs.js:269
-msgid "Toggle chat notification"
-msgstr "Umschalter Chat-Benachrichtigung"
-
-#: messagingmenu@lauinger-clan.de/prefs.js:272
-msgid "Toggle micro blogging notification"
-msgstr "Umschalter Mikroblog-Benachrichtigung"
-
-#: messagingmenu@lauinger-clan.de/prefs.js:275
-#: messagingmenu@lauinger-clan.de/schemas/org.gnome.shell.extensions.messagingmenu.gschema.xml:25
-msgid "Notification Color RGB"
-msgstr "Benachrichtigungsfarbe RGB"
-
-#: messagingmenu@lauinger-clan.de/prefs.js:291
-msgid "Usually located in '/usr/share/applications'"
-msgstr "Befinden sich normalerweise in '/usr/share/applications'"
-
-#: messagingmenu@lauinger-clan.de/prefs.js:293
-msgid "..."
-msgstr "..."
-
-#: messagingmenu@lauinger-clan.de/prefs.js:313
-msgid ""
-"Scan installed applications for compatible Email and Chat apps (Categories: "
-"Email, Chat)"
-msgstr ""
-"Scannen Sie installierte Anwendungen auf kompatible E-Mail- und Chat-"
-"Anwendungen (Kategorien: E-Mail, Chat)"
-
-#: messagingmenu@lauinger-clan.de/prefs.js:369
+#: messagingmenu@lauinger-clan.de/prefs.js:356
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:84
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:85
 msgid "Select app"
 msgstr "App auswählen"
 
@@ -160,39 +129,78 @@ msgstr "App auswählen"
 msgid "Email Notification:"
 msgstr "Epost-Benachrichtigung:"
 
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:17
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:13
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:14
+msgid "Toggle email notification"
+msgstr "Umschalter Epost-Benachrichtigung"
+
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:19
 msgid "Chat Notification:"
 msgstr "Chat-Benachrichtigung:"
 
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:22
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:20
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:21
+msgid "Toggle chat notification"
+msgstr "Umschalter Chat-Benachrichtigung"
+
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:26
 msgid "Micro Blogging Notification:"
 msgstr "Mikroblog-Benachrichtigung:"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:27
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:28
+msgid "Toggle micro blogging notification"
+msgstr "Umschalter Mikroblog-Benachrichtigung"
+
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:33
 msgid "Notification Color (RGB):"
 msgstr "Benachrichtigungsfarbe (RGB):"
 
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:38
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:34
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:35
+#: messagingmenu@lauinger-clan.de/schemas/org.gnome.shell.extensions.messagingmenu.gschema.xml:25
+msgid "Notification Color RGB"
+msgstr "Benachrichtigungsfarbe RGB"
+
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:46
 msgid "Icon size (pixel):"
 msgstr "Symbolgrösse (Pixel):"
 
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:54
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:47
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:48
+#: messagingmenu@lauinger-clan.de/schemas/org.gnome.shell.extensions.messagingmenu.gschema.xml:56
+msgid "Size of the app icons in the menu"
+msgstr "Grösse der Applikations-Symbole im Menü"
+
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:64
 msgid "Add menu"
 msgstr "Hinzufügen Menü"
 
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:58
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:68
 msgid "Type:"
 msgstr "Typ:"
 
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:74
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:90
 msgid "Name:"
 msgstr "Name:"
 
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:83
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:91
+msgid "Usually located in '/usr/share/applications'"
+msgstr "Befinden sich normalerweise in '/usr/share/applications'"
+
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:100
 msgid "Scan"
 msgstr "Scannen"
 
-#: messagingmenu@lauinger-clan.de/ui/prefs.ui:133
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:101
+msgid ""
+"Scan installed applications for compatible Email and Chat apps (Categories: "
+"Email, Chat)"
+msgstr ""
+"Scannen Sie installierte Anwendungen auf kompatible E-Mail- und Chat-"
+"Anwendungen (Kategorien: E-Mail, Chat)"
+
+#: messagingmenu@lauinger-clan.de/ui/prefs.ui:151
 msgid "Notifier"
 msgstr "Benachrichtigung"
 
@@ -272,9 +280,8 @@ msgstr "Kompatible versteckte Mikroblog Benachrichtigungen"
 msgid "Icon size"
 msgstr "Symbolgrösse"
 
-#: messagingmenu@lauinger-clan.de/schemas/org.gnome.shell.extensions.messagingmenu.gschema.xml:56
-msgid "Size of the app icons in the menu"
-msgstr "Grösse der Applikations-Symbole im Menü"
+#~ msgid "..."
+#~ msgstr "..."
 
 #~ msgid "Reset"
 #~ msgstr "Zurücksetzen"

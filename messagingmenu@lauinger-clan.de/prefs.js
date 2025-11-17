@@ -263,16 +263,12 @@ export default class AdwPrefs extends ExtensionPreferences {
 
     _page1(builder, settings, myAppChooser) {
         const email_setting_switch = builder.get_object("messagingmenu_row1");
-        email_setting_switch.set_tooltip_text(_("Toggle email notification"));
         settings.bind("notify-email", email_setting_switch, "active", Gio.SettingsBindFlags.DEFAULT);
         const chat_setting_switch = builder.get_object("messagingmenu_row2");
-        chat_setting_switch.set_tooltip_text(_("Toggle chat notification"));
         settings.bind("notify-chat", chat_setting_switch, "active", Gio.SettingsBindFlags.DEFAULT);
         const mblogging_setting_switch = builder.get_object("messagingmenu_row3");
-        mblogging_setting_switch.set_tooltip_text(_("Toggle micro blogging notification"));
         settings.bind("notify-mblogging", mblogging_setting_switch, "active", Gio.SettingsBindFlags.DEFAULT);
         const color_setting_button = builder.get_object("color_setting_button");
-        color_setting_button.set_tooltip_text(_("Notification Color RGB"));
         const mycolor = new Gdk.RGBA();
         mycolor.parse(this.getSettings().get_string("color-rgba"));
         color_setting_button.set_rgba(mycolor);
@@ -288,14 +284,8 @@ export default class AdwPrefs extends ExtensionPreferences {
         button_add.set_css_classes(["suggested-action"]);
         const entry_add = builder.get_object("messagingmenu_row_add2");
         button_add.connect("clicked", this._addMenu.bind(this, cmb_add, entry_add, builder));
-        entry_add.set_tooltip_text(_("Usually located in '/usr/share/applications'"));
-        const buttonfilechooser = new Gtk.Button({
-            label: _("..."),
-            valign: Gtk.Align.CENTER,
-        });
-        entry_add.add_suffix(buttonfilechooser);
-        entry_add.activatable_widget = buttonfilechooser;
-        buttonfilechooser.connect("clicked", async () => {
+        const buttonfilechooser = builder.get_object("messagingmenu_row_buttonselectapp");
+        buttonfilechooser.connect("activated", async () => {
             const errorLog = (...args) => {
                 this.getLogger().error("Error:", ...args);
             };
@@ -309,9 +299,6 @@ export default class AdwPrefs extends ExtensionPreferences {
             }
         });
         const button_scan = builder.get_object("button_add_menu_scan");
-        button_scan.set_tooltip_text(
-            _("Scan installed applications for compatible Email and Chat apps (Categories: Email, Chat)")
-        );
         button_scan.connect("clicked", this._scanApps.bind(this, builder, settings));
     }
 
