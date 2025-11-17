@@ -10,21 +10,29 @@
         <child>
           <object class="AdwSwitchRow" id="messagingmenu_row1">
             <property name="title" translatable="yes">Email Notification:</property>
+            <property name="subtitle" translatable="yes">Toggle email notification</property>
+            <property name="tooltip-text" translatable="yes">Toggle email notification</property>
           </object>
         </child>
         <child>
           <object class="AdwSwitchRow" id="messagingmenu_row2">
             <property name="title" translatable="yes">Chat Notification:</property>
+            <property name="subtitle" translatable="yes">Toggle chat notification</property>
+            <property name="tooltip-text" translatable="yes">Toggle chat notification</property>
           </object>
         </child>
         <child>
           <object class="AdwSwitchRow" id="messagingmenu_row3">
             <property name="title" translatable="yes">Micro Blogging Notification:</property>
+            <property name="subtitle" translatable="yes">Toggle micro blogging notification</property>
+            <property name="tooltip-text" translatable="yes">Toggle micro blogging notification</property>
           </object>
         </child>
         <child>
           <object class="AdwActionRow" id="messagingmenu_row4">
             <property name="title" translatable="yes">Notification Color (RGB):</property>
+            <property name="subtitle" translatable="yes">Notification Color RGB</property>
+            <property name="tooltip-text" translatable="yes">Notification Color RGB</property>
             <property name="activatable-widget">color_setting_button</property>
             <child>
               <object class="GtkColorButton" id="color_setting_button">
@@ -36,6 +44,8 @@
         <child>
           <object class="AdwSpinRow" id="messagingmenu_row5">
             <property name="title" translatable="yes">Icon size (pixel):</property>
+            <property name="subtitle" translatable="yes">Size of the app icons in the menu</property>
+            <property name="tooltip-text" translatable="yes">Size of the app icons in the menu</property>
             <property name="adjustment">
               <object class="GtkAdjustment">
                 <property name="lower">12</property>
@@ -70,8 +80,15 @@
       </object>
         </child>
         <child>
+          <object class="AdwButtonRow" id="messagingmenu_row_buttonselectapp">
+            <property name="title" translatable="yes">Select app</property>
+            <property name="tooltip-text" translatable="yes">Select app</property>
+          </object>
+        </child>        
+        <child>
           <object class="AdwEntryRow" id="messagingmenu_row_add2">
             <property name="title" translatable="yes">Name:</property>
+            <property name="tooltip-text" translatable="yes">Usually located in '/usr/share/applications'</property>
           </object>
         </child>
         <child>
@@ -81,6 +98,7 @@
             <child>
               <object class="GtkButton" id="button_add_menu_scan">
                 <property name="label" translatable="yes">Scan</property>
+                <property name="tooltip-text" translatable="yes">Scan installed applications for compatible Email and Chat apps (Categories: Email, Chat)</property>
                 <property name="valign">center</property>
               </object>
             </child>
