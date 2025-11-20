@@ -205,10 +205,11 @@ export default class AdwPrefs extends ExtensionPreferences {
     }
 
     _scanApps(builder, settings) {
-        const button_scan = builder.get_object("button_add_menu_scan");
+        const button_scan = builder.get_object("messagingmenu_row_buttonscan");
         button_scan.set_sensitive(false);
         const apps = Gio.AppInfo.get_all();
-        const adwrow = builder.get_object("messagingmenu_row_add3");
+        const adwrow = builder.get_object("messagingmenu_row_scanresult");
+        adwrow.visible = true;
         const compatibleemails = settings.get_string("compatible-emails");
         const compatiblechats = settings.get_string("compatible-chats");
         const compatiblehiddenemailnotifiers = settings.get_string("compatible-hidden-email-notifiers");
@@ -280,10 +281,9 @@ export default class AdwPrefs extends ExtensionPreferences {
         const cmb_add = builder.get_object("messagingmenu_cmb_add");
         cmb_add.set_selected(0);
         cmb_add.connect("notify", this._addMenuChangeDesc.bind(this, cmb_add, group_add));
-        const button_add = builder.get_object("button_add_menu_add");
-        button_add.set_css_classes(["suggested-action"]);
+        const button_add = builder.get_object("messagingmenu_row_buttonadd");
         const entry_add = builder.get_object("messagingmenu_row_add2");
-        button_add.connect("clicked", this._addMenu.bind(this, cmb_add, entry_add, builder));
+        button_add.connect("activated", this._addMenu.bind(this, cmb_add, entry_add, builder));
         const buttonfilechooser = builder.get_object("messagingmenu_row_buttonselectapp");
         buttonfilechooser.connect("activated", async () => {
             const errorLog = (...args) => {
@@ -298,8 +298,8 @@ export default class AdwPrefs extends ExtensionPreferences {
                 entry_add.set_text(appRow.subtitle.replace(".desktop", ""));
             }
         });
-        const button_scan = builder.get_object("button_add_menu_scan");
-        button_scan.connect("clicked", this._scanApps.bind(this, builder, settings));
+        const button_scan = builder.get_object("messagingmenu_row_buttonscan");
+        button_scan.connect("activated", this._scanApps.bind(this, builder, settings));
     }
 
     _addAppIcon(adwrow, appname) {

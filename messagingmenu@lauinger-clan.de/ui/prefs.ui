@@ -64,6 +64,15 @@
         <property name="title" translatable="yes">Add menu</property>
         <property name="description" translatable="yes">Name of .desktop files without .desktop ending</property>
         <child>
+          <object class="AdwButtonRow" id="messagingmenu_row_buttonselectapp">
+            <property name="title" translatable="yes">Select app</property>
+            <property name="tooltip-text" translatable="yes">Usually located in '/usr/share/applications'</property>
+            <style>
+              <class name="suggested-action" />
+            </style>
+          </object>
+        </child>
+        <child>
         <object class="AdwComboRow" id="messagingmenu_cmb_add">
         <property name="title" translatable="yes">Type:</property>
         <property name="model">
@@ -80,36 +89,28 @@
       </object>
         </child>
         <child>
-          <object class="AdwButtonRow" id="messagingmenu_row_buttonselectapp">
-            <property name="title" translatable="yes">Select app</property>
-            <property name="tooltip-text" translatable="yes">Usually located in '/usr/share/applications'</property>
-            <style>
-              <class name="suggested-action" />
-            </style>
-          </object>
-        </child>        
-        <child>
           <object class="AdwEntryRow" id="messagingmenu_row_add2">
             <property name="title" translatable="yes">Name:</property>
           </object>
         </child>
         <child>
-          <object class="AdwActionRow" id="messagingmenu_row_add3">
+          <object class="AdwButtonRow" id="messagingmenu_row_buttonadd">
+            <property name="title" translatable="yes">Add</property>
+            <style>
+              <class name="suggested-action" />
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="AdwButtonRow" id="messagingmenu_row_buttonscan">
+            <property name="title" translatable="yes">Scan</property>
+            <property name="tooltip-text" translatable="yes">Scan installed applications for compatible Email and Chat apps (Categories: Email, Chat)</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwActionRow" id="messagingmenu_row_scanresult">
             <property name="title" translatable="yes"></property>
-            <property name="activatable-widget">button_add_menu_add</property>
-            <child>
-              <object class="GtkButton" id="button_add_menu_scan">
-                <property name="label" translatable="yes">Scan</property>
-                <property name="tooltip-text" translatable="yes">Scan installed applications for compatible Email and Chat apps (Categories: Email, Chat)</property>
-                <property name="valign">center</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="button_add_menu_add">
-                <property name="label" translatable="yes">Add</property>
-                <property name="valign">center</property>
-              </object>
-            </child>
+            <property name="visible">false</property>
           </object>
         </child>
       </object>
