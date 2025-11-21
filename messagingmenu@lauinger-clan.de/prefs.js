@@ -347,7 +347,7 @@ export default class AdwPrefs extends ExtensionPreferences {
 
     fillPreferencesWindow(window) {
         window.search_enabled = true;
-        window.set_default_size(675, 700);
+        window.set_default_size(675, 775);
         const builder = Gtk.Builder.new();
         builder.add_from_file(this.path + "/ui/prefs.ui");
         const page1 = builder.get_object("messagingmenu_page_settings");

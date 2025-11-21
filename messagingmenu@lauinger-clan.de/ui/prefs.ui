@@ -67,9 +67,6 @@
           <object class="AdwButtonRow" id="messagingmenu_row_buttonselectapp">
             <property name="title" translatable="yes">Select app</property>
             <property name="tooltip-text" translatable="yes">Usually located in '/usr/share/applications'</property>
-            <style>
-              <class name="suggested-action" />
-            </style>
           </object>
         </child>
         <child>
