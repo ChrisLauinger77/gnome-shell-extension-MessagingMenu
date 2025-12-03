@@ -9,6 +9,7 @@ import * as Main from "resource:///org/gnome/shell/ui/main.js";
 import * as Util from "resource:///org/gnome/shell/misc/util.js";
 import * as PanelMenu from "resource:///org/gnome/shell/ui/panelMenu.js";
 import * as PopupMenu from "resource:///org/gnome/shell/ui/popupMenu.js";
+import * as animationUtils from "resource:///org/gnome/shell/misc/animationUtils.js";
 import { Extension, gettext as _ } from "resource:///org/gnome/shell/extensions/extension.js";
 
 const _rgbToHex = (r, g, b) => "#" + [r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("");
@@ -38,10 +39,10 @@ const MessageMenuItem = GObject.registerClass(
 
 const MessageMenu = GObject.registerClass(
     class MessageMenu_MessageMenu extends PanelMenu.Button {
-        _init(Me, intIcon_size) {
+        constructor(Me, intIcon_size) {
+            super(0, "MessageMenu");
             this._settings = Me._settings;
             this._intIcon_size = intIcon_size;
-            super._init(0, "MessageMenu");
 
             this._compatible_Chats = this._settings.get_string("compatible-chats").split(";").sort();
             this._compatible_MBlogs = this._settings
@@ -65,12 +66,12 @@ const MessageMenu = GObject.registerClass(
                 style_class: "panel-status-menu-box",
             });
             const gicon = Gio.icon_new_for_string(Me.path + "/icons/mymail-symbolic.svg");
-            const icon = new St.Icon({
+            this._icon = new St.Icon({
                 gicon,
                 style_class: "system-status-icon",
             });
 
-            hbox.add_child(icon);
+            hbox.add_child(this._icon);
             this.add_child(hbox);
 
             this.new_msg_string = _("Compose New Message");
@@ -217,22 +218,22 @@ const MessageMenu = GObject.registerClass(
         }
 
         _buildMenu(Me) {
-            for (let e_app of this._availableEmails) {
-                let newLauncher = new MessageMenuItem(e_app, this._intIcon_size);
+            for (const e_app of this._availableEmails) {
+                const newLauncher = new MessageMenuItem(e_app, this._intIcon_size);
                 this.menu.addMenuItem(newLauncher);
             }
             this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
 
             // insert Chat Clients into menu
-            for (let c_app of this._availableChats) {
-                let newLauncher = new MessageMenuItem(c_app, this._intIcon_size);
+            for (const c_app of this._availableChats) {
+                const newLauncher = new MessageMenuItem(c_app, this._intIcon_size);
                 this.menu.addMenuItem(newLauncher);
             }
             this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
 
             // insert Blogging Clients into menu
-            for (let mb_app of this._availableMBlogs) {
-                let newLauncher = new MessageMenuItem(mb_app, this._intIcon_size);
+            for (const mb_app of this._availableMBlogs) {
+                const newLauncher = new MessageMenuItem(mb_app, this._intIcon_size);
                 this.menu.addMenuItem(newLauncher);
             }
 
@@ -246,8 +247,8 @@ const MessageMenu = GObject.registerClass(
 
         _getAppsEMAIL(appsys) {
             //get available Email Apps
-            for (let app_name of this._compatible_Emails) {
-                let app = appsys.lookup_app(app_name + ".desktop");
+            for (const app_name of this._compatible_Emails) {
+                const app = appsys.lookup_app(app_name + ".desktop");
                 if (app !== null) {
                     // filter Apps with special Menus
                     if (app_name.toLowerCase().includes("thunderbird")) {
@@ -274,9 +275,8 @@ const MessageMenu = GObject.registerClass(
 
         _getAppsCHAT(appsys) {
             //get available Chat Apps
-            for (let c_app of this._compatible_Chats) {
-                let app_name = c_app;
-                let app = appsys.lookup_app(app_name + ".desktop");
+            for (const app_name of this._compatible_Chats) {
+                const app = appsys.lookup_app(app_name + ".desktop");
 
                 if (app !== null) {
                     this._availableChats.push(app);
@@ -289,9 +289,8 @@ const MessageMenu = GObject.registerClass(
 
         _getAppsBLOG(appsys) {
             //get available Blogging Apps
-            for (let mb_app of this._compatible_MBlogs) {
-                let app_name = mb_app;
-                let app = appsys.lookup_app(app_name + ".desktop");
+            for (const app_name of this._compatible_MBlogs) {
+                const app = appsys.lookup_app(app_name + ".desktop");
 
                 if (app !== null) {
                     this._availableMBlogs.push(app);
@@ -338,6 +337,12 @@ const MessageMenu = GObject.registerClass(
             Util.trySpawnCommandLine("geary mailto:user@example.com");
         }
 
+        animate() {
+            if (this._settings.get_boolean("wiggle-indicator")) {
+                animationUtils.wiggle(this._icon, { offset: 2, duration: 65, wiggleCount: 3 });
+            }
+        }
+
         destroy() {
             super.destroy();
         }
@@ -347,10 +352,9 @@ const MessageMenu = GObject.registerClass(
 export default class MessagingMenu extends Extension {
     _updateMessageStatus() {
         // get all Messages
-        let sources = Main.messageTray.getSources();
+        const sources = Main.messageTray.getSources();
         let newMessage = false;
-
-        for (let source of sources) {
+        for (const source of sources) {
             // check for new Chat Messages
             if (
                 this._settings.get_boolean("notify-chat") &&
@@ -383,41 +387,38 @@ export default class MessagingMenu extends Extension {
 
     _checkNotifyEmailByID(source) {
         // check for Message from known Email App
-        let result = false;
         if (source.app) {
-            for (let notifier of this._indicator.AvailableNotifiers) {
-                let app_id = notifier.get_id(); //e.g. thunderbird.desktop
+            for (const notifier of this._indicator.AvailableNotifiers) {
+                const app_id = notifier.get_id(); //e.g. thunderbird.desktop
                 if (app_id.toLowerCase().includes(source.app.get_id().toLowerCase())) {
-                    result = true;
+                    return true;
                 }
             }
         }
-        return result;
+        return false;
     }
 
     _checkNotifyEmailByName(source) {
-        let result = false;
         if (source.title) {
-            for (let notifier of this._indicator.AvailableNotifiers) {
-                let app_name = notifier.get_name(); //e.g. Thunderbird Mail
+            for (const notifier of this._indicator.AvailableNotifiers) {
+                const app_name = notifier.get_name(); //e.g. Thunderbird Mail
                 if (app_name.toLowerCase().includes(source.title.toLowerCase())) {
-                    result = true;
+                    return true;
                 }
             }
         }
-        return result;
+        return false;
     }
 
     _checkHiddenNotifierMatch(source, notifiers) {
-        let result = false;
         if (source.title) {
-            for (let notifier of notifiers) {
+            for (const notifier of notifiers) {
                 if (notifier.toLowerCase().includes(source.title.toLowerCase())) {
-                    result = true;
+                    return true;
                 }
             }
         }
-        return result;
+        return false;
     }
 
     _changeStatusIcon(newMessage) {
@@ -429,6 +430,7 @@ export default class MessagingMenu extends Extension {
             color = _rgbToHex(Number.parseInt(arrColor[0]), Number.parseInt(arrColor[1]), Number.parseInt(arrColor[2]));
             this._iconBox.set_style("color: " + color + ";");
             this._iconChanged = true;
+            this._indicator.animate();
         } else if (!newMessage && this._iconChanged) {
             this._iconBox.set_style(this._originalStyle);
             this._iconChanged = false;
@@ -436,13 +438,11 @@ export default class MessagingMenu extends Extension {
     }
 
     _unseenMessageCheck(source) {
-        let unseen = false;
         if (source.countVisible === undefined) {
-            unseen = source.unseenCount > 0;
+            return source.unseenCount > 0;
         } else {
-            unseen = source.countVisible > 0;
+            return source.countVisible > 0;
         }
-        return unseen;
     }
 
     _queuechanged() {
@@ -466,7 +466,7 @@ export default class MessagingMenu extends Extension {
 
     enable() {
         this._settings = this.getSettings();
-        let icon_size = this._settings.get_int("icon-size");
+        const icon_size = this._settings.get_int("icon-size");
         this._indicator = new MessageMenu(this, icon_size);
 
         // add Signals to array

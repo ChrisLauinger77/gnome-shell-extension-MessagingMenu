@@ -99,36 +99,36 @@ export default class AdwPrefs extends ExtensionPreferences {
             this.getLogger().log("_addMenu did not find entry_add text");
             return;
         }
-        let strsettings;
-        let strgroup;
+        let strSettings = "";
+        let strGroup = "";
         switch (cmb_add.get_selected()) {
             case 0:
-                strsettings = "compatible-emails";
-                strgroup = "messagingmenu_group_email";
+                strSettings = "compatible-emails";
+                strGroup = "messagingmenu_group_email";
                 break;
             case 1:
-                strsettings = "compatible-chats";
-                strgroup = "messagingmenu_group_chat";
+                strSettings = "compatible-chats";
+                strGroup = "messagingmenu_group_chat";
                 break;
             case 2:
-                strsettings = "compatible-mblogs";
-                strgroup = "messagingmenu_group_mblog";
+                strSettings = "compatible-mblogs";
+                strGroup = "messagingmenu_group_mblog";
                 break;
             case 3:
-                strsettings = "compatible-hidden-email-notifiers";
-                strgroup = "messagingmenu_group_emailnotifiers";
+                strSettings = "compatible-hidden-email-notifiers";
+                strGroup = "messagingmenu_group_emailnotifiers";
                 break;
             case 4:
-                strsettings = "compatible-hidden-mblog-notifiers";
-                strgroup = "messagingmenu_group_mblognotifiers";
+                strSettings = "compatible-hidden-mblog-notifiers";
+                strGroup = "messagingmenu_group_mblognotifiers";
                 break;
             default:
                 this.getLogger().log("_addMenu did not find get_active_id");
         }
-        let valuesettings = this.getSettings().get_string(strsettings);
+        const valuesettings = this.getSettings().get_string(strSettings);
         if (!valuesettings.toLowerCase().includes(entry_add.text.toLowerCase())) {
-            this.getSettings().set_string(strsettings, valuesettings + ";" + entry_add.text);
-            const group = builder.get_object(strgroup);
+            this.getSettings().set_string(strSettings, valuesettings + ";" + entry_add.text);
+            const group = builder.get_object(strGroup);
             const adwrow = new Adw.ActionRow({ title: entry_add.text });
             group.add(adwrow);
             entry_add.text = "";
@@ -187,7 +187,7 @@ export default class AdwPrefs extends ExtensionPreferences {
             subtitle: app.get_description(),
         });
         adwrow.set_tooltip_text(_("Found by scan"));
-        let stringlist = new Gtk.StringList();
+        const stringlist = new Gtk.StringList();
         stringlist.append(_("Email"));
         stringlist.append(_("Chat"));
         stringlist.append(_("Micro blogging"));
@@ -216,8 +216,8 @@ export default class AdwPrefs extends ExtensionPreferences {
         let count = 0;
         for (const app of apps) {
             const deskappinfo = Gio.DesktopAppInfo.new(app.get_id());
-            let categories = deskappinfo.get_categories();
-            let settingsapp = app.get_id().slice(0, -8); // Remove .desktop suffix
+            const categories = deskappinfo.get_categories();
+            const settingsapp = app.get_id().slice(0, -8); // Remove .desktop suffix
             if (categories !== null && categories.includes("Email")) {
                 if (!compatibleemails.includes(settingsapp) && !compatiblehiddenemailnotifiers.includes(settingsapp)) {
                     this._addScanRow(builder, app, 0);
@@ -274,6 +274,8 @@ export default class AdwPrefs extends ExtensionPreferences {
         mycolor.parse(this.getSettings().get_string("color-rgba"));
         color_setting_button.set_rgba(mycolor);
         color_setting_button.connect("color-set", this._onColorChanged.bind(this, color_setting_button));
+        const rowwiggle = builder.get_object("messagingmenu_rowwiggle");
+        settings.bind("wiggle-indicator", rowwiggle, "active", Gio.SettingsBindFlags.DEFAULT);
         const row5 = builder.get_object("messagingmenu_row5");
         settings.bind("icon-size", row5, "value", Gio.SettingsBindFlags.DEFAULT);
 
@@ -316,8 +318,8 @@ export default class AdwPrefs extends ExtensionPreferences {
     }
 
     _fillgroup(group, applist) {
-        for (let app of applist) {
-            let adwrow = new Adw.ActionRow({ title: app });
+        for (const app of applist) {
+            const adwrow = new Adw.ActionRow({ title: app });
             group.add(adwrow);
             this._addAppIcon(adwrow, app);
         }

@@ -42,6 +42,13 @@
           </object>
         </child>
         <child>
+          <object class="AdwSwitchRow" id="messagingmenu_rowwiggle">
+            <property name="title" translatable="yes">Wiggle Indicator:</property>
+            <property name="subtitle" translatable="yes">Toggle wiggle indicator</property>
+            <property name="tooltip-text" translatable="yes">Icon wiggles slightly when a new message arrives</property>
+          </object>
+        </child>
+        <child>
           <object class="AdwSpinRow" id="messagingmenu_row5">
             <property name="title" translatable="yes">Icon size (pixel):</property>
             <property name="subtitle" translatable="yes">Size of the app icons in the menu</property>
