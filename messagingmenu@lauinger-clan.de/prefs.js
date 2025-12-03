@@ -274,6 +274,8 @@ export default class AdwPrefs extends ExtensionPreferences {
         mycolor.parse(this.getSettings().get_string("color-rgba"));
         color_setting_button.set_rgba(mycolor);
         color_setting_button.connect("color-set", this._onColorChanged.bind(this, color_setting_button));
+        const rowwiggle = builder.get_object("messagingmenu_rowwiggle");
+        settings.bind("wiggle-indicator", rowwiggle, "active", Gio.SettingsBindFlags.DEFAULT);
         const row5 = builder.get_object("messagingmenu_row5");
         settings.bind("icon-size", row5, "value", Gio.SettingsBindFlags.DEFAULT);
 

@@ -16,7 +16,7 @@
       <description>Icon changes color on new Blogposts</description>
     </key>
     <key name="wiggle-indicator" type="b">
-      <default>false</default>
+      <default>true</default>
       <summary>Wiggle Indicator</summary>
       <description>Icon wiggles slightly when a new message arrives</description>
     </key>

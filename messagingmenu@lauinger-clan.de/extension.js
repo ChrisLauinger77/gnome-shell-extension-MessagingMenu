@@ -39,10 +39,10 @@ const MessageMenuItem = GObject.registerClass(
 
 const MessageMenu = GObject.registerClass(
     class MessageMenu_MessageMenu extends PanelMenu.Button {
-        _init(Me, intIcon_size) {
+        constructor(Me, intIcon_size) {
+            super(0, "MessageMenu");
             this._settings = Me._settings;
             this._intIcon_size = intIcon_size;
-            super._init(0, "MessageMenu");
 
             this._compatible_Chats = this._settings.get_string("compatible-chats").split(";").sort();
             this._compatible_MBlogs = this._settings
