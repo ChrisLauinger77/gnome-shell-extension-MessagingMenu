@@ -15,6 +15,11 @@
       <summary>Alert on new News</summary>
       <description>Icon changes color on new Blogposts</description>
     </key>
+    <key name="wiggle-indicator" type="b">
+      <default>false</default>
+      <summary>Wiggle Indicator</summary>
+      <description>Icon wiggles slightly when a new message arrives</description>
+    </key>
     <key name="color" type="s">
       <default>'#ff0000'</default>
       <summary>Notification Color HEX</summary>
