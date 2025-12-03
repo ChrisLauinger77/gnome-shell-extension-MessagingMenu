@@ -77,20 +77,20 @@
           </object>
         </child>
         <child>
-        <object class="AdwComboRow" id="messagingmenu_cmb_add">
-        <property name="title" translatable="yes">Type:</property>
-        <property name="model">
-          <object class="GtkStringList">
-            <items>
-              <item translatable="yes">Email</item>
-              <item translatable="yes">Chat</item>
-              <item translatable="yes">Micro blogging</item>
-              <item translatable="yes">Email notifier</item>
-              <item translatable="yes">Micro blogging notifier</item>
-            </items>
+          <object class="AdwComboRow" id="messagingmenu_cmb_add">
+            <property name="title" translatable="yes">Type:</property>
+            <property name="model">
+              <object class="GtkStringList">
+                <items>
+                  <item translatable="yes">Email</item>
+                  <item translatable="yes">Chat</item>
+                  <item translatable="yes">Micro blogging</item>
+                  <item translatable="yes">Email notifier</item>
+                  <item translatable="yes">Micro blogging notifier</item>
+                </items>
+              </object>
+            </property>
           </object>
-        </property>
-      </object>
         </child>
         <child>
           <object class="AdwEntryRow" id="messagingmenu_row_add2">
@@ -121,53 +121,53 @@
     </child>
   </object>
   <object class="AdwPreferencesPage" id="messagingmenu_page_email">
-      <property name="name">messagingmenu_page_email</property>
-      <property name="title" translatable="yes">Email</property>
-      <property name="icon-name">mail-message-new-symbolic</property>
-      <child>
-        <object class="AdwPreferencesGroup" id="messagingmenu_group_email">
-          <property name="title" translatable="yes">Email</property>
-          <property name="description" translatable="yes">Name of .desktop files without .desktop ending</property>
-        </object>
-      </child>
+    <property name="name">messagingmenu_page_email</property>
+    <property name="title" translatable="yes">Email</property>
+    <property name="icon-name">mail-message-new-symbolic</property>
+    <child>
+      <object class="AdwPreferencesGroup" id="messagingmenu_group_email">
+        <property name="title" translatable="yes">Email</property>
+        <property name="description" translatable="yes">Name of .desktop files without .desktop ending</property>
+      </object>
+    </child>
   </object>
   <object class="AdwPreferencesPage" id="messagingmenu_page_chat">
-      <property name="name">messagingmenu_page_chat</property>
-      <property name="title" translatable="yes">Chat</property>
-      <property name="icon-name">chat-message-new-symbolic</property>
-      <child>
-        <object class="AdwPreferencesGroup" id="messagingmenu_group_chat">
-          <property name="title" translatable="yes">Chat</property>
-          <property name="description" translatable="yes">Name of .desktop files without .desktop ending</property>
-        </object>
-      </child>
+    <property name="name">messagingmenu_page_chat</property>
+    <property name="title" translatable="yes">Chat</property>
+    <property name="icon-name">chat-message-new-symbolic</property>
+    <child>
+      <object class="AdwPreferencesGroup" id="messagingmenu_group_chat">
+        <property name="title" translatable="yes">Chat</property>
+        <property name="description" translatable="yes">Name of .desktop files without .desktop ending</property>
+      </object>
+    </child>
   </object>
   <object class="AdwPreferencesPage" id="messagingmenu_page_mblog">
-      <property name="name">messagingmenu_page_mblog</property>
-      <property name="title" translatable="yes">Micro blogging</property>
-      <property name="icon-name">face-wink-symbolic</property>
-      <child>
-        <object class="AdwPreferencesGroup" id="messagingmenu_group_mblog">
-          <property name="title" translatable="yes">Micro blogging</property>
-          <property name="description" translatable="yes">Name of .desktop files without .desktop ending</property>
-        </object>
-      </child>
+    <property name="name">messagingmenu_page_mblog</property>
+    <property name="title" translatable="yes">Micro blogging</property>
+    <property name="icon-name">face-wink-symbolic</property>
+    <child>
+      <object class="AdwPreferencesGroup" id="messagingmenu_group_mblog">
+        <property name="title" translatable="yes">Micro blogging</property>
+        <property name="description" translatable="yes">Name of .desktop files without .desktop ending</property>
+      </object>
+    </child>
   </object>
   <object class="AdwPreferencesPage" id="messagingmenu_page_notifiers">
-      <property name="name">messagingmenu_page_notifiers</property>
-      <property name="title" translatable="yes">Notifier</property>
-      <property name="icon-name">preferences-system-notifications-symbolic</property>
-      <child>
-        <object class="AdwPreferencesGroup" id="messagingmenu_group_emailnotifiers">
-          <property name="title" translatable="yes">Email notifier</property>
-          <property name="description" translatable="yes">Notifier title</property>
-        </object>
-      </child>
-      <child>
-        <object class="AdwPreferencesGroup" id="messagingmenu_group_mblognotifiers">
-          <property name="title" translatable="yes">Micro blogging notifier</property>
-          <property name="description" translatable="yes">Notifier title</property>
-        </object>
-      </child>
+    <property name="name">messagingmenu_page_notifiers</property>
+    <property name="title" translatable="yes">Notifier</property>
+    <property name="icon-name">preferences-system-notifications-symbolic</property>
+    <child>
+      <object class="AdwPreferencesGroup" id="messagingmenu_group_emailnotifiers">
+        <property name="title" translatable="yes">Email notifier</property>
+        <property name="description" translatable="yes">Notifier title</property>
+      </object>
+    </child>
+    <child>
+      <object class="AdwPreferencesGroup" id="messagingmenu_group_mblognotifiers">
+        <property name="title" translatable="yes">Micro blogging notifier</property>
+        <property name="description" translatable="yes">Notifier title</property>
+      </object>
+    </child>
   </object>
 </interface>
