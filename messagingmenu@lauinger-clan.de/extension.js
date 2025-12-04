@@ -4,6 +4,7 @@ import Shell from "gi://Shell";
 import Gio from "gi://Gio";
 import GObject from "gi://GObject";
 import St from "gi://St";
+import Gdk from "gi://Gdk";
 
 import * as Main from "resource:///org/gnome/shell/ui/main.js";
 import * as Util from "resource:///org/gnome/shell/misc/util.js";
@@ -12,7 +13,7 @@ import * as PopupMenu from "resource:///org/gnome/shell/ui/popupMenu.js";
 import * as animationUtils from "resource:///org/gnome/shell/misc/animationUtils.js";
 import { Extension, gettext as _ } from "resource:///org/gnome/shell/extensions/extension.js";
 
-const _rgbToHex = (r, g, b) => "#" + [r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("");
+const rgbToHex = (r, g, b) => "#" + [r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("");
 
 const MessageMenuItem = GObject.registerClass(
     class MessageMenu_MessageMenuItem extends PopupMenu.PopupBaseMenuItem {
@@ -424,10 +425,13 @@ export default class MessagingMenu extends Extension {
     _changeStatusIcon(newMessage) {
         // Change Status Icon in Panel
         if (newMessage && !this._iconChanged) {
-            let color;
-            let strcolor = this._settings.get_string("color-rgba");
-            let arrColor = strcolor.replace("rgb(", "").replace(")", "").split(",");
-            color = _rgbToHex(Number.parseInt(arrColor[0]), Number.parseInt(arrColor[1]), Number.parseInt(arrColor[2]));
+            const mycolor = new Gdk.RGBA();
+            mycolor.parse(this._settings.get_string("color-rgba"));
+            const color = rgbToHex(
+                Math.round(mycolor.red * 255),
+                Math.round(mycolor.green * 255),
+                Math.round(mycolor.blue * 255)
+            );
             this._iconBox.set_style("color: " + color + ";");
             this._iconChanged = true;
             this._indicator.animate();
