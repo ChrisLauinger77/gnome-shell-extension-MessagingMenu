@@ -4,7 +4,6 @@ import Shell from "gi://Shell";
 import Gio from "gi://Gio";
 import GObject from "gi://GObject";
 import St from "gi://St";
-import Gdk from "gi://Gdk";
 
 import * as Main from "resource:///org/gnome/shell/ui/main.js";
 import * as Util from "resource:///org/gnome/shell/misc/util.js";
@@ -425,13 +424,14 @@ export default class MessagingMenu extends Extension {
     _changeStatusIcon(newMessage) {
         // Change Status Icon in Panel
         if (newMessage && !this._iconChanged) {
-            const mycolor = new Gdk.RGBA();
-            mycolor.parse(this._settings.get_string("color-rgba"));
+            const strcolor = this._settings.get_string("color-rgba");
+            const arrColor = strcolor.replace("rgb(", "").replace(")", "").split(",");
             const color = rgbToHex(
-                Math.round(mycolor.red * 255),
-                Math.round(mycolor.green * 255),
-                Math.round(mycolor.blue * 255)
+                Number.parseInt(arrColor[0]),
+                Number.parseInt(arrColor[1]),
+                Number.parseInt(arrColor[2])
             );
+
             this._iconBox.set_style("color: " + color + ";");
             this._iconChanged = true;
             this._indicator.animate();
