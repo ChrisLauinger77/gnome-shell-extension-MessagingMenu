@@ -12,8 +12,6 @@ import * as PopupMenu from "resource:///org/gnome/shell/ui/popupMenu.js";
 import * as animationUtils from "resource:///org/gnome/shell/misc/animationUtils.js";
 import { Extension, gettext as _ } from "resource:///org/gnome/shell/extensions/extension.js";
 
-const rgbToHex = (r, g, b) => "#" + [r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("");
-
 const MessageMenuItem = GObject.registerClass(
     class MessageMenu_MessageMenuItem extends PopupMenu.PopupBaseMenuItem {
         constructor(app, intIcon_size) {
@@ -424,14 +422,7 @@ export default class MessagingMenu extends Extension {
     _changeStatusIcon(newMessage) {
         // Change Status Icon in Panel
         if (newMessage && !this._iconChanged) {
-            const strcolor = this._settings.get_string("color-rgba");
-            const arrColor = strcolor.replace("rgb(", "").replace(")", "").split(",");
-            const color = rgbToHex(
-                Number.parseInt(arrColor[0]),
-                Number.parseInt(arrColor[1]),
-                Number.parseInt(arrColor[2])
-            );
-
+            const color = this._settings.get_string("color-rgba");
             this._iconBox.set_style("color: " + color + ";");
             this._iconChanged = true;
             this._indicator.animate();
