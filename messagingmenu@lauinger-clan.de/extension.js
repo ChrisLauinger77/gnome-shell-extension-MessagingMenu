@@ -4,6 +4,7 @@ import Shell from "gi://Shell";
 import Gio from "gi://Gio";
 import GObject from "gi://GObject";
 import St from "gi://St";
+import Clutter from "gi://Clutter";
 
 import * as Main from "resource:///org/gnome/shell/ui/main.js";
 import * as Util from "resource:///org/gnome/shell/misc/util.js";
@@ -41,6 +42,7 @@ const MessageMenu = GObject.registerClass(
             super(0, "MessageMenu");
             this._settings = Me._settings;
             this._intIcon_size = intIcon_size;
+            this._ext = Me;
 
             this._compatible_Chats = this._settings.get_string("compatible-chats").split(";").sort();
             this._compatible_MBlogs = this._settings
@@ -339,6 +341,14 @@ const MessageMenu = GObject.registerClass(
             if (this._settings.get_boolean("wiggle-indicator")) {
                 animationUtils.wiggle(this._icon, { offset: 2, duration: 65, wiggleCount: 3 });
             }
+        }
+
+        vfunc_event(event) {
+            if (event.type() === Clutter.EventType.BUTTON_PRESS && event.get_button() === Clutter.BUTTON_MIDDLE) {
+                this._ext.openPreferences();
+                return Clutter.EVENT_STOP;
+            }
+            return super.vfunc_event(event);
         }
 
         destroy() {
