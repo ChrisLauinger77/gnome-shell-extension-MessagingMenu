@@ -13,35 +13,19 @@ import * as PopupMenu from "resource:///org/gnome/shell/ui/popupMenu.js";
 import * as animationUtils from "resource:///org/gnome/shell/misc/animationUtils.js";
 import { Extension, gettext as _ } from "resource:///org/gnome/shell/extensions/extension.js";
 
-const MessageMenuItem = GObject.registerClass(
-    class MessageMenu_MessageMenuItem extends PopupMenu.PopupBaseMenuItem {
-        constructor(app, intIcon_size) {
-            super();
-            this._app = app;
-
-            this.label = new St.Label({
-                text: app.get_name(),
-                style_class: "program-label",
-            });
-            this.add_child(this.label);
-
-            this._icon = app.create_icon_texture(intIcon_size);
-            this.add_child(this._icon);
-        }
-
-        activate(event) {
-            this._app.activate_full(-1, event.get_time());
-            super.activate(event);
-        }
-    }
-);
+const MessageMenuItem = (app) => {
+    const menuItem = new PopupMenu.PopupImageMenuItem(app.get_name(), app.icon.to_string());
+    menuItem.connect("activate", () => {
+        app.activate();
+    });
+    return menuItem;
+};
 
 const MessageMenu = GObject.registerClass(
     class MessageMenu_MessageMenu extends PanelMenu.Button {
-        constructor(Me, intIcon_size) {
+        constructor(Me) {
             super(0, "MessageMenu");
             this._settings = Me._settings;
-            this._intIcon_size = intIcon_size;
             this._ext = Me;
 
             this._compatible_Chats = this._settings.get_string("compatible-chats").split(";").sort();
@@ -127,7 +111,7 @@ const MessageMenu = GObject.registerClass(
         }
 
         _buildMenuEVOLUTION() {
-            const newLauncher = new MessageMenuItem(this._evolution, this._intIcon_size);
+            const newLauncher = MessageMenuItem(this._evolution);
             this.menu.addMenuItem(newLauncher);
 
             this.comp = new PopupMenu.PopupImageMenuItem(this.new_msg_string + "...", "mail-message-new-symbolic", {
@@ -144,7 +128,7 @@ const MessageMenu = GObject.registerClass(
         }
 
         _buildMenuTHUNDERBIRD() {
-            const newLauncher = new MessageMenuItem(this._thunderbird, this._intIcon_size);
+            const newLauncher = MessageMenuItem(this._thunderbird);
             this.menu.addMenuItem(newLauncher);
 
             this.comp_tb = new PopupMenu.PopupImageMenuItem(this.new_msg_string + "...", "mail-message-new-symbolic", {
@@ -162,7 +146,7 @@ const MessageMenu = GObject.registerClass(
         }
 
         _buildMenuICEDOVE() {
-            const newLauncher = new MessageMenuItem(this._icedove, this._intIcon_size);
+            const newLauncher = MessageMenuItem(this._icedove);
             this.menu.addMenuItem(newLauncher);
 
             this.comp_icedove = new PopupMenu.PopupImageMenuItem(
@@ -182,7 +166,7 @@ const MessageMenu = GObject.registerClass(
         }
 
         _buildMenuKMAIL() {
-            const newLauncher = new MessageMenuItem(this._kmail, this._intIcon_size);
+            const newLauncher = MessageMenuItem(this._kmail);
             this.menu.addMenuItem(newLauncher);
 
             this.comp = new PopupMenu.PopupImageMenuItem(this.new_msg_string + "...", "mail-message-new-symbolic", {
@@ -194,7 +178,7 @@ const MessageMenu = GObject.registerClass(
         }
 
         _buildMenuCLAWS() {
-            const newLauncher = new MessageMenuItem(this._claws, this._intIcon_size);
+            const newLauncher = MessageMenuItem(this._claws);
             this.menu.addMenuItem(newLauncher);
 
             this.comp = new PopupMenu.PopupImageMenuItem(this.new_msg_string + "...", "mail-message-new-symbolic", {
@@ -206,7 +190,7 @@ const MessageMenu = GObject.registerClass(
         }
 
         _buildMenuGEARY() {
-            const newLauncher = new MessageMenuItem(this._geary, this._intIcon_size);
+            const newLauncher = MessageMenuItem(this._geary);
             this.menu.addMenuItem(newLauncher);
 
             this.comp = new PopupMenu.PopupImageMenuItem(this.new_msg_string + "...", "mail-message-new-symbolic", {
@@ -219,21 +203,21 @@ const MessageMenu = GObject.registerClass(
 
         _buildMenu(Me) {
             for (const e_app of this._availableEmails) {
-                const newLauncher = new MessageMenuItem(e_app, this._intIcon_size);
+                const newLauncher = MessageMenuItem(e_app);
                 this.menu.addMenuItem(newLauncher);
             }
             this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
 
             // insert Chat Clients into menu
             for (const c_app of this._availableChats) {
-                const newLauncher = new MessageMenuItem(c_app, this._intIcon_size);
+                const newLauncher = MessageMenuItem(c_app);
                 this.menu.addMenuItem(newLauncher);
             }
             this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
 
             // insert Blogging Clients into menu
             for (const mb_app of this._availableMBlogs) {
-                const newLauncher = new MessageMenuItem(mb_app, this._intIcon_size);
+                const newLauncher = MessageMenuItem(mb_app);
                 this.menu.addMenuItem(newLauncher);
             }
 
@@ -471,8 +455,7 @@ export default class MessagingMenu extends Extension {
 
     enable() {
         this._settings = this.getSettings();
-        const icon_size = this._settings.get_int("icon-size");
-        this._indicator = new MessageMenu(this, icon_size);
+        this._indicator = new MessageMenu(this);
 
         // add Signals to array
         this._settingSignals = [];
@@ -480,7 +463,6 @@ export default class MessagingMenu extends Extension {
             { key: "compatible-chats", callback: "onParamChanged" },
             { key: "compatible-mblogs", callback: "onParamChanged" },
             { key: "compatible-emails", callback: "onParamChanged" },
-            { key: "icon-size", callback: "onParamChanged" },
         ];
         for (const setting of settingsToMonitor) {
             this._settingSignals.push(

@@ -48,22 +48,6 @@
             <property name="tooltip-text" translatable="yes">Icon wiggles slightly when a new message arrives</property>
           </object>
         </child>
-        <child>
-          <object class="AdwSpinRow" id="messagingmenu_row5">
-            <property name="title" translatable="yes">Icon size (pixel):</property>
-            <property name="subtitle" translatable="yes">Size of the app icons in the menu</property>
-            <property name="tooltip-text" translatable="yes">Size of the app icons in the menu</property>
-            <property name="adjustment">
-              <object class="GtkAdjustment">
-                <property name="lower">12</property>
-                <property name="upper">48</property>
-                <property name="value">22</property>
-                <property name="page-increment">10</property>
-                <property name="step-increment">1</property>
-              </object>
-            </property>
-          </object>
-        </child>
       </object>
     </child>
     <child>
