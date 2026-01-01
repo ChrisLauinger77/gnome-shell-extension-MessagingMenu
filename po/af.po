@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-03 19:29+0100\n"
-"PO-Revision-Date: 2025-06-01 19:23+0200\n"
+"POT-Creation-Date: 2026-01-01 14:54+0100\n"
+"PO-Revision-Date: 2026-01-01 12:55+0100\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: \n"
 "Language: af\n"
@@ -119,7 +119,7 @@ msgid_plural "Scan found %d apps"
 msgstr[0] ""
 msgstr[1] ""
 
-#: messagingmenu@lauinger-clan.de/prefs.js:356
+#: messagingmenu@lauinger-clan.de/prefs.js:358
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:75
 msgid "Select app"
 msgstr "Kies toepassing"
@@ -292,27 +292,3 @@ msgstr "Kompatible verborge mikroblogkennisgewers"
 #: messagingmenu@lauinger-clan.de/schemas/org.gnome.shell.extensions.messagingmenu.gschema.xml:60
 msgid "Icon size"
 msgstr "Ikoongrootte"
-
-#~ msgid "..."
-#~ msgstr "..."
-
-#~ msgid "Notification Color (Hex):"
-#~ msgstr "Kennisgewing Kleur (Hex):"
-
-#~ msgid "Select desktop file"
-#~ msgstr "Kies desktop-lêer"
-
-#~ msgid "Select desktop file for "
-#~ msgstr "Kies desktop-lêer vir "
-
-#~ msgid "Notification Color (RGB)"
-#~ msgstr "Kennisgewing Kleur (RGB)"
-
-#~ msgid "Alert on new Messages from other Apps"
-#~ msgstr "Waarskuwing oor nuwe boodskappe van ander toepassings"
-
-#~ msgid "Icon blinks on new Messages"
-#~ msgstr "Ikoon knip by nuwe boodskappe"
-
-#~ msgid "Micro blog"
-#~ msgstr "Mikro Blog"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-03 19:29+0100\n"
+"POT-Creation-Date: 2026-01-01 14:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -119,7 +119,7 @@ msgid_plural "Scan found %d apps"
 msgstr[0] ""
 msgstr[1] ""
 
-#: messagingmenu@lauinger-clan.de/prefs.js:356
+#: messagingmenu@lauinger-clan.de/prefs.js:358
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:75
 msgid "Select app"
 msgstr ""

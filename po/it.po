@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Messaging Menu Version 4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-03 19:29+0100\n"
+"POT-Creation-Date: 2026-01-01 14:54+0100\n"
 "PO-Revision-Date: 2025-06-01 19:25+0200\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: Italian\n"
@@ -120,7 +120,7 @@ msgid_plural "Scan found %d apps"
 msgstr[0] ""
 msgstr[1] ""
 
-#: messagingmenu@lauinger-clan.de/prefs.js:356
+#: messagingmenu@lauinger-clan.de/prefs.js:358
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:75
 msgid "Select app"
 msgstr "Seleziona app"
@@ -297,27 +297,3 @@ msgstr "Notificatori MBlog nascosti compatibili"
 #: messagingmenu@lauinger-clan.de/schemas/org.gnome.shell.extensions.messagingmenu.gschema.xml:60
 msgid "Icon size"
 msgstr "Dimensione icona"
-
-#~ msgid "..."
-#~ msgstr "..."
-
-#~ msgid "Notification Color (Hex):"
-#~ msgstr "Colore della Notifica (Hex):"
-
-#~ msgid "Select desktop file"
-#~ msgstr "Seleziona il file desktop"
-
-#~ msgid "Select desktop file for "
-#~ msgstr "Seleziona file desktop per "
-
-#~ msgid "Notification Color (RGB)"
-#~ msgstr "Colore della Notifica (RGB)"
-
-#~ msgid "Alert on new Messages from other Apps"
-#~ msgstr "Avviso sui nuovi messaggi da altre app"
-
-#~ msgid "Icon blinks on new Messages"
-#~ msgstr "L'icona lampeggia sui nuovi messaggi"
-
-#~ msgid "Micro blog"
-#~ msgstr "Micro blog"

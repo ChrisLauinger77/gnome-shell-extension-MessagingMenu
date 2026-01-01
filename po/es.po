@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Messaging Menu Version 4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-03 19:29+0100\n"
-"PO-Revision-Date: 2025-06-01 19:25+0200\n"
+"POT-Creation-Date: 2026-01-01 14:54+0100\n"
+"PO-Revision-Date: 2026-01-01 12:55+0100\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -119,7 +119,7 @@ msgid_plural "Scan found %d apps"
 msgstr[0] ""
 msgstr[1] ""
 
-#: messagingmenu@lauinger-clan.de/prefs.js:356
+#: messagingmenu@lauinger-clan.de/prefs.js:358
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:75
 msgid "Select app"
 msgstr "Seleccionar aplicación"
@@ -293,16 +293,3 @@ msgstr "Notificadores de Microblogs Ocultos Compatibles"
 #: messagingmenu@lauinger-clan.de/schemas/org.gnome.shell.extensions.messagingmenu.gschema.xml:60
 msgid "Icon size"
 msgstr "Tamaño del icono"
-
-#~ msgid "..."
-#~ msgstr "..."
-
-#~ msgid "Notification Color (Hex):"
-#~ msgstr "Color de la Notificación (Hex):"
-
-#~ msgid "Notification Color (RGB)"
-#~ msgstr "Color de la Notificación (RGB)"
-
-#, fuzzy
-#~ msgid "Micro blog"
-#~ msgstr "Notificación Microblog:"

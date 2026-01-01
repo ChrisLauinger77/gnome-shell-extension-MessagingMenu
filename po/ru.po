@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Messaging Menu Version 4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-03 19:29+0100\n"
+"POT-Creation-Date: 2026-01-01 14:54+0100\n"
 "PO-Revision-Date: 2025-09-11 21:56+0300\n"
 "Last-Translator: Fraxinus Acer\n"
 "Language-Team: Russian\n"
@@ -122,7 +122,7 @@ msgstr[0] "Сканирование нашло %d приложение"
 msgstr[1] "Сканирование нашло %d приложения"
 msgstr[2] "Сканирование нашло %d приложений"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:356
+#: messagingmenu@lauinger-clan.de/prefs.js:358
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:75
 msgid "Select app"
 msgstr "Выбрать приложение"
@@ -298,27 +298,3 @@ msgstr "Совместимые скрытые уведомления микро�
 #: messagingmenu@lauinger-clan.de/schemas/org.gnome.shell.extensions.messagingmenu.gschema.xml:60
 msgid "Icon size"
 msgstr "Размер иконки"
-
-#~ msgid "..."
-#~ msgstr "..."
-
-#~ msgid "Notification Color (Hex):"
-#~ msgstr "Цвет уведомления (Hex):"
-
-#~ msgid "Select desktop file"
-#~ msgstr "Выбрать файл рабочего стола"
-
-#~ msgid "Select desktop file for "
-#~ msgstr "Выбрать файл рабочего стола для "
-
-#~ msgid "Notification Color (RGB)"
-#~ msgstr "Цвет уведомления (RGB)"
-
-#~ msgid "Alert on new Messages from other Apps"
-#~ msgstr "Оповещение о новых сообщениях из других приложений"
-
-#~ msgid "Icon blinks on new Messages"
-#~ msgstr "Значок мигает при новых сообщениях"
-
-#~ msgid "Micro blog"
-#~ msgstr "Микроблог"

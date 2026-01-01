@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Messaging Menu Version 4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-03 19:29+0100\n"
-"PO-Revision-Date: 2025-06-01 19:23+0200\n"
+"POT-Creation-Date: 2026-01-01 14:54+0100\n"
+"PO-Revision-Date: 2026-01-01 12:58+0100\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: Czech\n"
 "Language: cz\n"
@@ -120,7 +120,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: messagingmenu@lauinger-clan.de/prefs.js:356
+#: messagingmenu@lauinger-clan.de/prefs.js:358
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:75
 msgid "Select app"
 msgstr "Vybrat aplikaci"
@@ -293,16 +293,3 @@ msgstr "Kompatibilní skrytá upozornění na micro-blogy"
 #: messagingmenu@lauinger-clan.de/schemas/org.gnome.shell.extensions.messagingmenu.gschema.xml:60
 msgid "Icon size"
 msgstr "Velikost ikony"
-
-#~ msgid "..."
-#~ msgstr "..."
-
-#~ msgid "Notification Color (Hex):"
-#~ msgstr "Barva upozornění (Hex)"
-
-#~ msgid "Notification Color (RGB)"
-#~ msgstr "Barva upozornění (RGB)"
-
-#, fuzzy
-#~ msgid "Micro blog"
-#~ msgstr "Upozornění na příspěvek na micro-blogu:"
