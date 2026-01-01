@@ -246,7 +246,6 @@ export default class AdwPrefs extends ExtensionPreferences {
                 "compatible-emails",
                 "compatible-hidden-email-notifiers",
                 "compatible-hidden-mblog-notifiers",
-                "icon-size",
                 "notify-email",
                 "notify-chat",
                 "notify-mblogging",
