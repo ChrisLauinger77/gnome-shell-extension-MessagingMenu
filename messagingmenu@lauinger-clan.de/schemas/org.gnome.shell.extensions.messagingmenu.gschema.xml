@@ -55,10 +55,5 @@
       <summary>Compatible hidden MBlog Notifiers</summary>
       <description>Must be their Notificationtitle, because lookup_app does not work here</description>
     </key>
-    <key name="icon-size" type="i">
-      <default>22</default>
-      <summary>Icon size</summary>
-      <description>Size of the app icons in the menu</description>
-    </key>
   </schema>
 </schemalist>
