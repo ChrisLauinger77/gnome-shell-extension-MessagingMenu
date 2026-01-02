@@ -13,21 +13,12 @@ import * as PopupMenu from "resource:///org/gnome/shell/ui/popupMenu.js";
 import * as animationUtils from "resource:///org/gnome/shell/misc/animationUtils.js";
 import { Extension, gettext as _ } from "resource:///org/gnome/shell/extensions/extension.js";
 
-const MessageMenuItem = (app) => {
-    const menuItem = new PopupMenu.PopupImageMenuItem(app.get_name(), app.icon.to_string());
-    menuItem.connect("activate", () => {
-        app.activate();
-    });
-    return menuItem;
-};
-
 const MessageMenu = GObject.registerClass(
     class MessageMenu_MessageMenu extends PanelMenu.Button {
-        constructor(Me) {
+        constructor(extension) {
             super(0, "MessageMenu");
-            this._settings = Me._settings;
-            this._ext = Me;
-
+            this._settings = extension._settings;
+            this._extension = extension;
             this._compatible_Chats = this._settings.get_string("compatible-chats").split(";").sort();
             this._compatible_MBlogs = this._settings
                 .get_string("compatible-mblogs")
@@ -49,7 +40,7 @@ const MessageMenu = GObject.registerClass(
             const hbox = new St.BoxLayout({
                 style_class: "panel-status-menu-box",
             });
-            const gicon = Gio.icon_new_for_string(Me.path + "/icons/mymail-symbolic.svg");
+            const gicon = Gio.icon_new_for_string(this._extension.path + "/icons/mymail-symbolic.svg");
             this._icon = new St.Icon({
                 gicon,
                 style_class: "system-status-icon",
@@ -95,14 +86,22 @@ const MessageMenu = GObject.registerClass(
             if (this._geary !== null) {
                 this._buildMenuGEARY();
             }
-            this._buildMenu(Me);
+            this._buildMenu(this._extension);
             this.connect("button-press-event", (actor, event) => {
                 if (event.get_button() === Clutter.BUTTON_MIDDLE) {
-                    this._ext.openPreferences();
+                    this._extension.openPreferences();
                     this.menu.close();
                 }
                 return Clutter.EVENT_STOP;
             });
+        }
+
+        createMessageMenuItem(app) {
+            const menuItem = new PopupMenu.PopupImageMenuItem(app.get_name(), app.icon.to_string());
+            menuItem.connect("activate", () => {
+                app.activate();
+            });
+            return menuItem;
         }
 
         get AvailableNotifiers() {
@@ -118,7 +117,7 @@ const MessageMenu = GObject.registerClass(
         }
 
         _buildMenuEVOLUTION() {
-            const newLauncher = MessageMenuItem(this._evolution);
+            const newLauncher = this.createMessageMenuItem(this._evolution);
             this.menu.addMenuItem(newLauncher);
 
             this.comp = new PopupMenu.PopupImageMenuItem(this.new_msg_string + "...", "mail-message-new-symbolic", {
@@ -135,7 +134,7 @@ const MessageMenu = GObject.registerClass(
         }
 
         _buildMenuTHUNDERBIRD() {
-            const newLauncher = MessageMenuItem(this._thunderbird);
+            const newLauncher = this.createMessageMenuItem(this._thunderbird);
             this.menu.addMenuItem(newLauncher);
 
             this.comp_tb = new PopupMenu.PopupImageMenuItem(this.new_msg_string + "...", "mail-message-new-symbolic", {
@@ -153,7 +152,7 @@ const MessageMenu = GObject.registerClass(
         }
 
         _buildMenuICEDOVE() {
-            const newLauncher = MessageMenuItem(this._icedove);
+            const newLauncher = this.createMessageMenuItem(this._icedove);
             this.menu.addMenuItem(newLauncher);
 
             this.comp_icedove = new PopupMenu.PopupImageMenuItem(
@@ -173,7 +172,7 @@ const MessageMenu = GObject.registerClass(
         }
 
         _buildMenuKMAIL() {
-            const newLauncher = MessageMenuItem(this._kmail);
+            const newLauncher = this.createMessageMenuItem(this._kmail);
             this.menu.addMenuItem(newLauncher);
 
             this.comp = new PopupMenu.PopupImageMenuItem(this.new_msg_string + "...", "mail-message-new-symbolic", {
@@ -185,7 +184,7 @@ const MessageMenu = GObject.registerClass(
         }
 
         _buildMenuCLAWS() {
-            const newLauncher = MessageMenuItem(this._claws);
+            const newLauncher = this.createMessageMenuItem(this._claws);
             this.menu.addMenuItem(newLauncher);
 
             this.comp = new PopupMenu.PopupImageMenuItem(this.new_msg_string + "...", "mail-message-new-symbolic", {
@@ -197,7 +196,7 @@ const MessageMenu = GObject.registerClass(
         }
 
         _buildMenuGEARY() {
-            const newLauncher = MessageMenuItem(this._geary);
+            const newLauncher = this.createMessageMenuItem(this._geary);
             this.menu.addMenuItem(newLauncher);
 
             this.comp = new PopupMenu.PopupImageMenuItem(this.new_msg_string + "...", "mail-message-new-symbolic", {
@@ -208,32 +207,32 @@ const MessageMenu = GObject.registerClass(
             this.menu.addMenuItem(this.comp);
         }
 
-        _buildMenu(Me) {
+        _buildMenu(extension) {
             for (const e_app of this._availableEmails) {
-                const newLauncher = MessageMenuItem(e_app);
+                const newLauncher = this.createMessageMenuItem(e_app);
                 this.menu.addMenuItem(newLauncher);
             }
             this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
 
             // insert Chat Clients into menu
             for (const c_app of this._availableChats) {
-                const newLauncher = MessageMenuItem(c_app);
+                const newLauncher = this.createMessageMenuItem(c_app);
                 this.menu.addMenuItem(newLauncher);
             }
             this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
 
             // insert Blogging Clients into menu
             for (const mb_app of this._availableMBlogs) {
-                const newLauncher = MessageMenuItem(mb_app);
+                const newLauncher = this.createMessageMenuItem(mb_app);
                 this.menu.addMenuItem(newLauncher);
             }
 
             // Add an entry-point for settings
             this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
-            const settingsItem = this.menu.addAction(_("Settings"), () => Me.openPreferences());
+            const settingsItem = this.menu.addAction(_("Settings"), () => extension.openPreferences());
             // Ensure the settings are unavailable when the screen is locked
             settingsItem.visible = Main.sessionMode.allowSettings;
-            this.menu._settingsActions[Me.uuid] = settingsItem;
+            this.menu._settingsActions[extension.uuid] = settingsItem;
         }
 
         _getAppsEMAIL(appsys) {
