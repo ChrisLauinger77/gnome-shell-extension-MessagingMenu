@@ -100,8 +100,8 @@ const MessageMenu = GObject.registerClass(
                 if (event.get_button() === Clutter.BUTTON_MIDDLE) {
                     this._ext.openPreferences();
                     this.menu.close();
-                    return Clutter.EVENT_STOP;
                 }
+                return Clutter.EVENT_STOP;
             });
         }
 
