@@ -96,6 +96,13 @@ const MessageMenu = GObject.registerClass(
                 this._buildMenuGEARY();
             }
             this._buildMenu(Me);
+            this.connect("button-press-event", (actor, event) => {
+                if (event.get_button() === Clutter.BUTTON_MIDDLE) {
+                    this._ext.openPreferences();
+                    this.menu.close();
+                    return Clutter.EVENT_STOP;
+                }
+            });
         }
 
         get AvailableNotifiers() {
@@ -223,7 +230,7 @@ const MessageMenu = GObject.registerClass(
 
             // Add an entry-point for settings
             this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
-            const settingsItem = this.menu.addAction(_("Settings"), () => Me._openPreferences());
+            const settingsItem = this.menu.addAction(_("Settings"), () => Me.openPreferences());
             // Ensure the settings are unavailable when the screen is locked
             settingsItem.visible = Main.sessionMode.allowSettings;
             this.menu._settingsActions[Me.uuid] = settingsItem;
@@ -327,14 +334,6 @@ const MessageMenu = GObject.registerClass(
             }
         }
 
-        vfunc_event(event) {
-            if (event.type() === Clutter.EventType.BUTTON_PRESS && event.get_button() === Clutter.BUTTON_MIDDLE) {
-                this._ext.openPreferences();
-                return Clutter.EVENT_STOP;
-            }
-            return super.vfunc_event(event);
-        }
-
         destroy() {
             super.destroy();
         }
@@ -419,11 +418,11 @@ export default class MessagingMenu extends Extension {
             const color = this._settings.get_string("color-rgba");
             this._iconBox.set_style("color: " + color + ";");
             this._iconChanged = true;
-            this._indicator.animate();
         } else if (!newMessage && this._iconChanged) {
             this._iconBox.set_style(this._originalStyle);
             this._iconChanged = false;
         }
+        this._indicator.animate();
     }
 
     _unseenMessageCheck(source) {
@@ -434,7 +433,7 @@ export default class MessagingMenu extends Extension {
         }
     }
 
-    _queuechanged() {
+    _onQueueChanged() {
         try {
             this._updateMessageStatus();
         } catch (err) {
@@ -444,11 +443,7 @@ export default class MessagingMenu extends Extension {
         }
     }
 
-    _openPreferences() {
-        this.openPreferences();
-    }
-
-    onParamChanged() {
+    _onParamChanged() {
         this.disable();
         this.enable();
     }
@@ -460,9 +455,9 @@ export default class MessagingMenu extends Extension {
         // add Signals to array
         this._settingSignals = [];
         const settingsToMonitor = [
-            { key: "compatible-chats", callback: "onParamChanged" },
-            { key: "compatible-mblogs", callback: "onParamChanged" },
-            { key: "compatible-emails", callback: "onParamChanged" },
+            { key: "compatible-chats", callback: "_onParamChanged" },
+            { key: "compatible-mblogs", callback: "_onParamChanged" },
+            { key: "compatible-emails", callback: "_onParamChanged" },
         ];
         for (const setting of settingsToMonitor) {
             this._settingSignals.push(
@@ -477,7 +472,7 @@ export default class MessagingMenu extends Extension {
         this._iconBox = statusArea.messageMenu;
         this._iconChanged = false;
         this._originalStyle = this._iconBox.get_style();
-        this._messageTraySignal = Main.messageTray.connect("queue-changed", this._queuechanged.bind(this));
+        this._messageTraySignal = Main.messageTray.connect("queue-changed", this._onQueueChanged.bind(this));
     }
 
     disable() {
