@@ -417,11 +417,12 @@ export default class MessagingMenu extends Extension {
             const color = this._settings.get_string("color-rgba");
             this._iconBox.set_style("color: " + color + ";");
             this._iconChanged = true;
+            this._indicator.animate();
         } else if (!newMessage && this._iconChanged) {
             this._iconBox.set_style(this._originalStyle);
             this._iconChanged = false;
+            this._indicator.animate();
         }
-        this._indicator.animate();
     }
 
     _unseenMessageCheck(source) {
