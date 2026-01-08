@@ -116,16 +116,18 @@ const MessageMenu = GObject.registerClass(
             return this._compatibleHiddenMBlogNotifiers;
         }
 
+        _createMessageMenuItemSpecial(label, image) {
+            return new PopupMenu.PopupImageMenuItem(label, image, {
+                style_class: "special-action",
+            });
+        }
+
         _buildMenuEVOLUTION() {
             const newLauncher = this.createMessageMenuItem(this._evolution);
             this.menu.addMenuItem(newLauncher);
 
-            this.comp = new PopupMenu.PopupImageMenuItem(this.new_msg_string + "...", "mail-message-new-symbolic", {
-                style_class: "special-action",
-            });
-            this.con = new PopupMenu.PopupImageMenuItem(this.contacts_string, "contact-new-symbolic", {
-                style_class: "special-action",
-            });
+            this.comp = this._createMessageMenuItemSpecial(this.new_msg_string, "mail-message-new-symbolic");
+            this.con = this._createMessageMenuItemSpecial(this.contacts_string, "contact-new-symbolic");
 
             this.con.connect("activate", this._evolutionContacts.bind(this));
             this.comp.connect("activate", this._evolutionCompose.bind(this));
@@ -137,12 +139,8 @@ const MessageMenu = GObject.registerClass(
             const newLauncher = this.createMessageMenuItem(this._thunderbird);
             this.menu.addMenuItem(newLauncher);
 
-            this.comp_tb = new PopupMenu.PopupImageMenuItem(this.new_msg_string + "...", "mail-message-new-symbolic", {
-                style_class: "special-action",
-            });
-            this.con_tb = new PopupMenu.PopupImageMenuItem(this.contacts_string, "contact-new-symbolic", {
-                style_class: "special-action",
-            });
+            this.comp_tb = this._createMessageMenuItemSpecial(this.new_msg_string, "mail-message-new-symbolic");
+            this.con_tb = this._createMessageMenuItemSpecial(this.contacts_string, "contact-new-symbolic");
 
             this.comp_tb.connect("activate", this._TbCompose.bind(this));
             this.menu.addMenuItem(this.comp_tb);
@@ -155,14 +153,8 @@ const MessageMenu = GObject.registerClass(
             const newLauncher = this.createMessageMenuItem(this._icedove);
             this.menu.addMenuItem(newLauncher);
 
-            this.comp_icedove = new PopupMenu.PopupImageMenuItem(
-                this.new_msg_string + "...",
-                "mail-message-new-symbolic",
-                { style_class: "special-action" }
-            );
-            this.con_icedove = new PopupMenu.PopupImageMenuItem(this.contacts_string, "contact-new-symbolic", {
-                style_class: "special-action",
-            });
+            this.comp_icedove = this._createMessageMenuItemSpecial(this.new_msg_string, "mail-message-new-symbolic");
+            this.con_icedove = this._createMessageMenuItemSpecial(this.contacts_string, "contact-new-symbolic");
 
             this.comp_icedove.connect("activate", this._icedoveCompose.bind(this));
             this.menu.addMenuItem(this.comp_icedove);
@@ -175,9 +167,7 @@ const MessageMenu = GObject.registerClass(
             const newLauncher = this.createMessageMenuItem(this._kmail);
             this.menu.addMenuItem(newLauncher);
 
-            this.comp = new PopupMenu.PopupImageMenuItem(this.new_msg_string + "...", "mail-message-new-symbolic", {
-                style_class: "special-action",
-            });
+            this.comp = this._createMessageMenuItemSpecial(this.new_msg_string, "mail-message-new-symbolic");
 
             this.comp.connect("activate", this._kmailCompose.bind(this));
             this.menu.addMenuItem(this.comp);
@@ -187,9 +177,7 @@ const MessageMenu = GObject.registerClass(
             const newLauncher = this.createMessageMenuItem(this._claws);
             this.menu.addMenuItem(newLauncher);
 
-            this.comp = new PopupMenu.PopupImageMenuItem(this.new_msg_string + "...", "mail-message-new-symbolic", {
-                style_class: "special-action",
-            });
+            this.comp = this._createMessageMenuItemSpecial(this.new_msg_string, "mail-message-new-symbolic");
 
             this.comp.connect("activate", this._clawsCompose.bind(this));
             this.menu.addMenuItem(this.comp);
@@ -199,9 +187,7 @@ const MessageMenu = GObject.registerClass(
             const newLauncher = this.createMessageMenuItem(this._geary);
             this.menu.addMenuItem(newLauncher);
 
-            this.comp = new PopupMenu.PopupImageMenuItem(this.new_msg_string + "...", "mail-message-new-symbolic", {
-                style_class: "special-action",
-            });
+            this.comp = this._createMessageMenuItemSpecial(this.new_msg_string, "mail-message-new-symbolic");
 
             this.comp.connect("activate", this._gearyCompose.bind(this));
             this.menu.addMenuItem(this.comp);
