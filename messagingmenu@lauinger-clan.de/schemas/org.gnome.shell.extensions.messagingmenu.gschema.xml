@@ -31,7 +31,7 @@
       <description>The color used to paint the Icon(GNOME 42 and later)</description>
     </key>
     <key name="compatible-chats" type="s">
-      <default>'amsn;caprine;chat.rocket.RocketChat;com.nextcloud.talk;com.teamspeak.TeamSpeak;discord;emesene;empathy;fedora-empathy;gajim;hexchat;im.dino.Dino;io.github.qtox.qTox;kadu;kde4-kmess;kde4-konversation;kde4-kopete;openfetion;org.gnome.Fractal;org.gnome.Polari;org.signal.Signal;org.telegram.desktop;pidgin;qtox;qutim;signal-desktop;skype;skypeforlinux;slack;telegramdesktop;utox;venom;viber;xchat;Zoom'</default>
+      <default>'amsn;caprine;chat.rocket.RocketChat;com.nextcloud.talk;com.teamspeak.TeamSpeak;de.schmidhuberj.Flare;discord;emesene;empathy;fedora-empathy;gajim;hexchat;im.dino.Dino;io.github.qtox.qTox;kadu;kde4-kmess;kde4-konversation;kde4-kopete;openfetion;org.gnome.Fractal;org.gnome.Polari;org.signal.Signal;org.telegram.desktop;pidgin;qtox;qutim;signal-desktop;skype;skypeforlinux;slack;telegramdesktop;utox;venom;viber;xchat;Zoom'</default>
       <summary>Compatible Chats</summary>
       <description>Case sensitive name of the .desktop file names to start the app (without .desktop ending) delimited by semicolon</description>
     </key>
