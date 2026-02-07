@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Messaging Menu Version 4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-01 17:26+0100\n"
+"POT-Creation-Date: 2026-02-07 09:57+0100\n"
 "PO-Revision-Date: 2025-09-11 21:56+0300\n"
 "Last-Translator: Fraxinus Acer\n"
 "Language-Team: Russian\n"
@@ -20,15 +20,15 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Generator: Poedit 3.6\n"
 
-#: messagingmenu@lauinger-clan.de/extension.js:61
+#: messagingmenu@lauinger-clan.de/extension.js:52
 msgid "Compose New Message"
 msgstr "Создать Новое Сообщение"
 
-#: messagingmenu@lauinger-clan.de/extension.js:62
+#: messagingmenu@lauinger-clan.de/extension.js:53
 msgid "Contacts"
 msgstr "Контакты"
 
-#: messagingmenu@lauinger-clan.de/extension.js:226
+#: messagingmenu@lauinger-clan.de/extension.js:218
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:5
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:9
 msgid "Settings"
@@ -122,7 +122,7 @@ msgstr[0] "Сканирование нашло %d приложение"
 msgstr[1] "Сканирование нашло %d приложения"
 msgstr[2] "Сканирование нашло %d приложений"
 
-#: messagingmenu@lauinger-clan.de/prefs.js:356
+#: messagingmenu@lauinger-clan.de/prefs.js:357
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:59
 msgid "Select app"
 msgstr "Выбрать приложение"
