@@ -1,5 +1,11 @@
 # Messaging Menu
 
+<div align="center">
+
+![Gnome Extensions Downloads](https://img.shields.io/gnome-extensions/dt/messagingmenu@lauinger-clan.de) ![GNOME Shell](https://img.shields.io/badge/GNOME-3.34%20--%2050-blue?logo=gnome&logoColor=white) ![GitHub License](https://img.shields.io/github/license/ChrisLauinger77/gnome-shell-extension-messagingmenu)
+
+</div>
+
 A Messaging Menu for the Gnome Shell. All email, chat, and microblogging
 applications in one place.
 
