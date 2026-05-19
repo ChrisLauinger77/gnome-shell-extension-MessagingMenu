@@ -166,16 +166,16 @@ msgstr "Цвет уведомлений (RGB)"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:46
 msgid "Wiggle Indicator:"
-msgstr ""
+msgstr "Индикатор покачивания:"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:47
 msgid "Toggle wiggle indicator"
-msgstr ""
+msgstr "Переключить индикатор покачивания"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:48
 #: messagingmenu@lauinger-clan.de/schemas/org.gnome.shell.extensions.messagingmenu.gschema.xml:21
 msgid "Icon wiggles slightly when a new message arrives"
-msgstr ""
+msgstr "Значок слегка покачивается при получении нового сообщения"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:55
 msgid "Add menu"
@@ -235,7 +235,7 @@ msgstr "Иконка меняет цвет при новых записях в �
 
 #: messagingmenu@lauinger-clan.de/schemas/org.gnome.shell.extensions.messagingmenu.gschema.xml:20
 msgid "Wiggle Indicator"
-msgstr ""
+msgstr "Индикатор покачивания"
 
 #: messagingmenu@lauinger-clan.de/schemas/org.gnome.shell.extensions.messagingmenu.gschema.xml:25
 msgid "Notification Color HEX"

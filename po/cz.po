@@ -34,7 +34,7 @@ msgstr "Nastavení"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:24
 msgid "Search..."
-msgstr ""
+msgstr "Hledat..."
 
 #: messagingmenu@lauinger-clan.de/prefs.js:36
 msgid "Select"
@@ -64,11 +64,11 @@ msgstr "Obnovit nastavení"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:156
 msgid "Reset all settings to default values"
-msgstr ""
+msgstr "Obnovit všechna nastavení na výchozí hodnoty"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:189
 msgid "Found by scan"
-msgstr ""
+msgstr "Nalezeno skenováním"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:191
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:69
@@ -110,15 +110,15 @@ msgstr "Přidat"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:236
 msgid "Scan finished"
-msgstr ""
+msgstr "Skenování dokončeno"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:237
 #, javascript-format
 msgid "Scan found %d app"
 msgid_plural "Scan found %d apps"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Skenování našlo %d aplikaci"
+msgstr[1] "Skenování našlo %d aplikace"
+msgstr[2] "Skenování našlo %d aplikací"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:357
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:59
@@ -164,16 +164,16 @@ msgstr "Barva upozornění (RGB)"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:46
 msgid "Wiggle Indicator:"
-msgstr ""
+msgstr "Ukazatel kývání:"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:47
 msgid "Toggle wiggle indicator"
-msgstr ""
+msgstr "Přepnout ukazatel kývání"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:48
 #: messagingmenu@lauinger-clan.de/schemas/org.gnome.shell.extensions.messagingmenu.gschema.xml:21
 msgid "Icon wiggles slightly when a new message arrives"
-msgstr ""
+msgstr "Ikona se mírně kývá, když dorazí nová zpráva"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:55
 msgid "Add menu"
@@ -193,13 +193,15 @@ msgstr "Název:"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:94
 msgid "Scan"
-msgstr ""
+msgstr "Prohledat"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:95
 msgid ""
 "Scan installed applications for compatible Email and Chat apps (Categories: "
 "Email, Chat)"
 msgstr ""
+"Prohledat nainstalované aplikace kvůli kompatibilním e-mailovým a chatovým "
+"aplikacím (Kategorie: Email, Chat)"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:142
 msgid "Notifier"
@@ -231,7 +233,7 @@ msgstr "Ikona změní barvu při nových příspěvcích na blogu"
 
 #: messagingmenu@lauinger-clan.de/schemas/org.gnome.shell.extensions.messagingmenu.gschema.xml:20
 msgid "Wiggle Indicator"
-msgstr ""
+msgstr "Ukazatel kývání"
 
 #: messagingmenu@lauinger-clan.de/schemas/org.gnome.shell.extensions.messagingmenu.gschema.xml:25
 msgid "Notification Color HEX"

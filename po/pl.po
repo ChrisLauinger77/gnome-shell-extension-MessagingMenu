@@ -36,7 +36,7 @@ msgstr "Ustawienia"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:24
 msgid "Search..."
-msgstr ""
+msgstr "Szukaj..."
 
 #: messagingmenu@lauinger-clan.de/prefs.js:36
 msgid "Select"
@@ -66,11 +66,11 @@ msgstr "Przywróć ustawienia"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:156
 msgid "Reset all settings to default values"
-msgstr ""
+msgstr "Przywróć wszystkie ustawienia do wartości domyślnych"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:189
 msgid "Found by scan"
-msgstr ""
+msgstr "Znaleziono podczas skanowania"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:191
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:69
@@ -112,15 +112,15 @@ msgstr "Dodaj"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:236
 msgid "Scan finished"
-msgstr ""
+msgstr "Skanowanie zakończone"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:237
 #, javascript-format
 msgid "Scan found %d app"
 msgid_plural "Scan found %d apps"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Skanowanie znalazło %d aplikację"
+msgstr[1] "Skanowanie znalazło %d aplikacje"
+msgstr[2] "Skanowanie znalazło %d aplikacji"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:357
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:59
@@ -166,16 +166,16 @@ msgstr "Kolor powiadomienia (RGB)"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:46
 msgid "Wiggle Indicator:"
-msgstr ""
+msgstr "Wskaźnik poruszania:"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:47
 msgid "Toggle wiggle indicator"
-msgstr ""
+msgstr "Przełącz wskaźnik poruszania"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:48
 #: messagingmenu@lauinger-clan.de/schemas/org.gnome.shell.extensions.messagingmenu.gschema.xml:21
 msgid "Icon wiggles slightly when a new message arrives"
-msgstr ""
+msgstr "Ikona lekko się porusza, gdy nadejdzie nowa wiadomość"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:55
 msgid "Add menu"
@@ -195,13 +195,15 @@ msgstr "Nazwa:"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:94
 msgid "Scan"
-msgstr ""
+msgstr "Skanuj"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:95
 msgid ""
 "Scan installed applications for compatible Email and Chat apps (Categories: "
 "Email, Chat)"
 msgstr ""
+"Skanuj zainstalowane aplikacje w poszukiwaniu kompatybilnych aplikacji "
+"email i chat (Kategorie: Email, Chat)"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:142
 msgid "Notifier"
@@ -233,7 +235,7 @@ msgstr "Ikona zmienia kolor przy nowych wpisach na blogu"
 
 #: messagingmenu@lauinger-clan.de/schemas/org.gnome.shell.extensions.messagingmenu.gschema.xml:20
 msgid "Wiggle Indicator"
-msgstr ""
+msgstr "Wskaźnik poruszania"
 
 #: messagingmenu@lauinger-clan.de/schemas/org.gnome.shell.extensions.messagingmenu.gschema.xml:25
 msgid "Notification Color HEX"

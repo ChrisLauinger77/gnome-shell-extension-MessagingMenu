@@ -34,7 +34,7 @@ msgstr "Instellings"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:24
 msgid "Search..."
-msgstr ""
+msgstr "Soek..."
 
 #: messagingmenu@lauinger-clan.de/prefs.js:36
 msgid "Select"
@@ -64,11 +64,11 @@ msgstr "Herstel Instellings"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:156
 msgid "Reset all settings to default values"
-msgstr ""
+msgstr "Herstel alle instellings na verstekwaardes"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:189
 msgid "Found by scan"
-msgstr ""
+msgstr "Gevind deur skandering"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:191
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:69
@@ -110,14 +110,14 @@ msgstr "Voeg by"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:236
 msgid "Scan finished"
-msgstr ""
+msgstr "Skandering voltooi"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:237
 #, javascript-format
 msgid "Scan found %d app"
 msgid_plural "Scan found %d apps"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Skandering het %d toepassing gevind"
+msgstr[1] "Skandering het %d toepassings gevind"
 
 #: messagingmenu@lauinger-clan.de/prefs.js:357
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:59
@@ -163,16 +163,16 @@ msgstr "Kennisgewing Kleur (RGB)"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:46
 msgid "Wiggle Indicator:"
-msgstr ""
+msgstr "Wikkel-aanwyser:"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:47
 msgid "Toggle wiggle indicator"
-msgstr ""
+msgstr "Skakel wikkel-aanwyser"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:48
 #: messagingmenu@lauinger-clan.de/schemas/org.gnome.shell.extensions.messagingmenu.gschema.xml:21
 msgid "Icon wiggles slightly when a new message arrives"
-msgstr ""
+msgstr "Ikoon wikkel effens wanneer 'n nuwe boodskap aankom"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:55
 msgid "Add menu"
@@ -192,13 +192,15 @@ msgstr "Naam:"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:94
 msgid "Scan"
-msgstr ""
+msgstr "Skandeer"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:95
 msgid ""
 "Scan installed applications for compatible Email and Chat apps (Categories: "
 "Email, Chat)"
 msgstr ""
+"Skandeer geïnstalleerde toepassings vir versoenbare e-pos- en "
+"kletstoepassings (Kategorieë: E-pos, Klets)"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:142
 msgid "Notifier"
@@ -230,7 +232,7 @@ msgstr "Ikoon verander van kleur by nuwe blogposte"
 
 #: messagingmenu@lauinger-clan.de/schemas/org.gnome.shell.extensions.messagingmenu.gschema.xml:20
 msgid "Wiggle Indicator"
-msgstr ""
+msgstr "Wikkel-aanwyser"
 
 #: messagingmenu@lauinger-clan.de/schemas/org.gnome.shell.extensions.messagingmenu.gschema.xml:25
 msgid "Notification Color HEX"
