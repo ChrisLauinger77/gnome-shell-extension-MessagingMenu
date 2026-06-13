@@ -41,7 +41,7 @@
       <description>Case sensitive name of the .desktop file names to start the app (without .desktop ending) delimited by semicolon</description>
     </key>
     <key name="compatible-emails" type="s">
-      <default>'claws-mail;evolution;geary;gnome-gmail;icedove;kde4-KMail2;mozilla-thunderbird;org.gnome.Evolution;org.gnome.Geary;org.mozilla.Thunderbird;postler;thunderbird'</default>
+      <default>'claws-mail;evolution;geary;gnome-gmail;icedove;kde4-KMail2;mozilla-thunderbird;org.gnome.Evolution;org.gnome.Geary;org.mozilla.Thunderbird;postler;thunderbird;org.mozilla.thunderbird_esr'</default>
       <summary>Compatible Emails</summary>
       <description>Case sensitive name of the .desktop file names to start the app (without .desktop ending) delimited by semicolon</description>
     </key>
