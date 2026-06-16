@@ -50,6 +50,9 @@ plus manual GNOME Shell testing where possible.
   string set changes.
 - The release workflow builds with `dbus-run-session -- ./messagingmenu.sh zip`.
   Avoid changing packaging behavior without checking `.github/workflows/release.yml`.
+- Check `gnome-extension-review.md` when changing runtime, preferences,
+  metadata, schema, packaging, or user-data behavior that may affect
+  extensions.gnome.org review.
 
 ## Translations
 
