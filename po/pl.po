@@ -202,8 +202,8 @@ msgid ""
 "Scan installed applications for compatible Email and Chat apps (Categories: "
 "Email, Chat)"
 msgstr ""
-"Skanuj zainstalowane aplikacje w poszukiwaniu kompatybilnych aplikacji "
-"email i chat (Kategorie: Email, Chat)"
+"Skanuj zainstalowane aplikacje w poszukiwaniu kompatybilnych aplikacji email "
+"i chat (Kategorie: Email, Chat)"
 
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:142
 msgid "Notifier"
