@@ -430,22 +430,21 @@ export default class MessagingMenu extends Extension {
     }
 
     _trackNotificationSource(source) {
-        if (this._notificationSourceSignals.has(source)) {
+        if (this._notificationSources.has(source)) {
             return;
         }
 
-        const signal = source.connect("notify::count", this._onNotificationSourcesChanged.bind(this));
-        this._notificationSourceSignals.set(source, signal);
+        source.connectObject("notify::count", this._onNotificationSourcesChanged.bind(this), this);
+        this._notificationSources.add(source);
     }
 
     _untrackNotificationSource(source) {
-        const signal = this._notificationSourceSignals.get(source);
-        if (signal === undefined) {
+        if (!this._notificationSources.has(source)) {
             return;
         }
 
-        source.disconnect(signal);
-        this._notificationSourceSignals.delete(source);
+        source.disconnectObject(this);
+        this._notificationSources.delete(source);
     }
 
     _onNotificationSourceAdded(tray, source) {
@@ -487,11 +486,14 @@ export default class MessagingMenu extends Extension {
         this._iconBox = statusArea.messageMenu;
         this._iconChanged = false;
         this._originalStyle = this._iconBox.get_style();
-        this._notificationSourceSignals = new Map();
-        this._messageTraySignals = [
-            Main.messageTray.connect("source-added", this._onNotificationSourceAdded.bind(this)),
-            Main.messageTray.connect("source-removed", this._onNotificationSourceRemoved.bind(this)),
-        ];
+        this._notificationSources = new Set();
+        Main.messageTray.connectObject(
+            "source-added",
+            this._onNotificationSourceAdded.bind(this),
+            "source-removed",
+            this._onNotificationSourceRemoved.bind(this),
+            this
+        );
         for (const source of Main.messageTray.getSources()) {
             this._trackNotificationSource(source);
         }
@@ -504,14 +506,11 @@ export default class MessagingMenu extends Extension {
             this._settings.disconnect(signal);
         }
         this._settingSignals = null;
-        for (const signal of this._messageTraySignals) {
-            Main.messageTray.disconnect(signal);
+        Main.messageTray.disconnectObject(this);
+        for (const source of this._notificationSources) {
+            source.disconnectObject(this);
         }
-        this._messageTraySignals = null;
-        for (const [source, signal] of this._notificationSourceSignals) {
-            source.disconnect(signal);
-        }
-        this._notificationSourceSignals = null;
+        this._notificationSources = null;
         this._indicator.destroy();
         this._indicator = null;
         this._settings = null;
