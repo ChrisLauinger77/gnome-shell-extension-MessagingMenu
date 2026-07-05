@@ -4,4 +4,3 @@ gschemas.compiled
 *.mo
 *.po~
 node_modules
-package-lock.json
