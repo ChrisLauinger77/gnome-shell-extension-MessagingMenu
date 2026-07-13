@@ -12,6 +12,8 @@ import {
 } from "resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js";
 
 const AppChooser = GObject.registerClass(
+    // The matching class name is intentional for GObject registration.
+    // eslint-disable-next-line no-shadow
     class AppChooser extends Adw.Window {
         constructor(params = {}) {
             super(params);
