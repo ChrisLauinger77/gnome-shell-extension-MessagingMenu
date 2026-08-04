@@ -87,13 +87,28 @@ const MessageMenu = GObject.registerClass(
                 this._buildMenuGEARY();
             }
             this._buildMenu(this._extension);
-            this.connect("button-press-event", (actor, event) => {
-                if (event.get_button() === Clutter.BUTTON_MIDDLE) {
-                    this._extension.openPreferences();
-                    this.menu.close();
-                }
-                return Clutter.EVENT_STOP;
+            this._buttonClickGestures();
+        }
+
+        _buttonClickGestures() {
+            // make sure the menu opens on left click, and that middle click opens the preferences
+            this._clickGesture.required_button = Clutter.BUTTON_PRIMARY;
+            const middleClickGesture = new Clutter.ClickGesture({
+                required_button: Clutter.BUTTON_MIDDLE,
             });
+            middleClickGesture.connect("recognize", () => {
+                this.menu.close();
+                this._extension.openPreferences();
+            });
+            this.add_action(middleClickGesture);
+
+            const secondaryClickGesture = new Clutter.ClickGesture({
+                required_button: Clutter.BUTTON_SECONDARY,
+            });
+            secondaryClickGesture.connect("recognize", () => {
+                this.menu.toggle();
+            });
+            this.add_action(secondaryClickGesture);
         }
 
         createMessageMenuItem(app) {
