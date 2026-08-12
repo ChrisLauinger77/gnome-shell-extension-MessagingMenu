@@ -68,18 +68,25 @@ const AppChooser = GObject.registerClass(
             searchEntry.connect("search-changed", () => {
                 this.listBox.invalidate_filter();
             });
-            this.cancelBtn.connect("clicked", () => {
-                this.close();
-            });
         }
 
         showChooser() {
             return new Promise((resolve) => {
-                const signalId = this.selectBtn.connect("clicked", () => {
-                    this.close();
-                    this.selectBtn.disconnect(signalId);
-                    const row = this.listBox.get_selected_row();
+                const signals = {};
+                const finish = (row, close = true) => {
+                    this.selectBtn.disconnect(signals.select);
+                    this.cancelBtn.disconnect(signals.cancel);
+                    this.disconnect(signals.close);
+                    if (close) this.close();
                     resolve(row);
+                };
+                signals.select = this.selectBtn.connect("clicked", () =>
+                    finish(this.listBox.get_selected_row())
+                );
+                signals.cancel = this.cancelBtn.connect("clicked", () => finish(null));
+                signals.close = this.connect("close-request", () => {
+                    finish(null, false);
+                    return false;
                 });
                 this.present();
             });
@@ -252,6 +259,7 @@ export default class AdwPrefs extends ExtensionPreferences {
                 "notify-chat",
                 "notify-mblogging",
                 "color-rgba",
+                "wiggle-indicator",
             ];
             for (const key of keys) {
                 if (settings.is_writable(key)) {

@@ -357,12 +357,14 @@ export default class MessagingMenu extends Extension {
             } else if (source.app) {
                 if (this._settings.get_boolean("notify-email")) {
                     newMessage =
+                        newMessage ||
                         this._checkNotifyEmailByID(source) ||
                         this._checkHiddenNotifierMatch(source, this._indicator.compatibleHiddenEmailNotifiers);
                 }
             } else {
                 if (this._settings.get_boolean("notify-email")) {
                     newMessage =
+                        newMessage ||
                         this._checkNotifyEmailByName(source) ||
                         this._checkHiddenNotifierMatch(source, this._indicator.compatibleHiddenEmailNotifiers);
                 }
