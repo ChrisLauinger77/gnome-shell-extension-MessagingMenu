@@ -207,7 +207,7 @@ export default class AdwPrefs extends ExtensionPreferences {
         const button_add = new Gtk.Button({ label: _("Add") });
         button_add.set_css_classes(["suggested-action"]);
         button_add.valign = Gtk.Align.CENTER;
-        button_add.connect("clicked", this._overtakeScanRow.bind(this, builder, adwrow));
+        button_add.connect("clicked", this._overtakeScanRow.bind(this, builder, settings, adwrow));
         adwrow.add_suffix(button_add);
     }
 
