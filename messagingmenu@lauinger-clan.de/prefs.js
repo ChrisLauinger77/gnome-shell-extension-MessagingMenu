@@ -234,7 +234,7 @@ export default class AdwPrefs extends ExtensionPreferences {
             }
             if (categories !== null && categories.includes("Chat")) {
                 if (!compatiblechats.includes(settingsapp)) {
-                    this._addScanRow(builder, app, 1);
+                    this._addScanRow(builder, settings, app, 1);
                     this.getLogger().log("Chat app found:", app.get_id());
                     count += 1;
                 }
