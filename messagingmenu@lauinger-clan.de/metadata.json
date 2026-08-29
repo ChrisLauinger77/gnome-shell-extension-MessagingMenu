@@ -3,7 +3,11 @@
     "gettext-domain": "messagingmenu",
     "description": "A Messaging Menu for the Gnome Shell. All Email and Chat Applications in one Place.",
     "uuid": "messagingmenu@lauinger-clan.de",
-    "shell-version": ["48", "49", "50"],
+    "shell-version": [
+        "49",
+        "50",
+        "51"
+    ],
     "original-author": "sinisterstuf",
     "url": "https://github.com/ChrisLauinger77/gnome-shell-extension-messagingmenu",
     "settings-schema": "org.gnome.shell.extensions.messagingmenu",
@@ -13,5 +17,5 @@
         "paypal": "ChrisLauinger"
     },
     "version": 999,
-    "version-name": "50.4"
+    "version-name": "51.0"
 }

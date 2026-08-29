@@ -68,18 +68,23 @@ const AppChooser = GObject.registerClass(
             searchEntry.connect("search-changed", () => {
                 this.listBox.invalidate_filter();
             });
-            this.cancelBtn.connect("clicked", () => {
-                this.close();
-            });
         }
 
         showChooser() {
             return new Promise((resolve) => {
-                const signalId = this.selectBtn.connect("clicked", () => {
-                    this.close();
-                    this.selectBtn.disconnect(signalId);
-                    const row = this.listBox.get_selected_row();
+                const signals = {};
+                const finish = (row, close = true) => {
+                    this.selectBtn.disconnect(signals.select);
+                    this.cancelBtn.disconnect(signals.cancel);
+                    this.disconnect(signals.close);
+                    if (close) this.close();
                     resolve(row);
+                };
+                signals.select = this.selectBtn.connect("clicked", () => finish(this.listBox.get_selected_row()));
+                signals.cancel = this.cancelBtn.connect("clicked", () => finish(null));
+                signals.close = this.connect("close-request", () => {
+                    finish(null, false);
+                    return false;
                 });
                 this.present();
             });
@@ -96,7 +101,7 @@ export default class AdwPrefs extends ExtensionPreferences {
         }
     }
 
-    _addMenu(cmb_add, entry_add, builder) {
+    _addMenu(settings, cmb_add, entry_add, builder) {
         if (entry_add.get_text() === "") {
             this.getLogger().log("_addMenu did not find entry_add text");
             return;
@@ -127,9 +132,9 @@ export default class AdwPrefs extends ExtensionPreferences {
             default:
                 this.getLogger().log("_addMenu did not find get_active_id");
         }
-        const valuesettings = this.getSettings().get_string(strSettings);
+        const valuesettings = settings.get_string(strSettings);
         if (!valuesettings.toLowerCase().includes(entry_add.text.toLowerCase())) {
-            this.getSettings().set_string(strSettings, valuesettings + ";" + entry_add.text);
+            settings.set_string(strSettings, valuesettings + ";" + entry_add.text);
             const group = builder.get_object(strGroup);
             const adwrow = new Adw.ActionRow({ title: entry_add.text });
             group.add(adwrow);
@@ -166,11 +171,11 @@ export default class AdwPrefs extends ExtensionPreferences {
         }
     }
 
-    _onColorChanged(color_setting_button) {
-        this.getSettings().set_string("color-rgba", color_setting_button.get_rgba().to_string());
+    _onColorChanged(settings, color_setting_button) {
+        settings.set_string("color-rgba", color_setting_button.get_rgba().to_string());
     }
 
-    _overtakeScanRow(builder, adwrow) {
+    _overtakeScanRow(builder, settings, adwrow) {
         const group_add = builder.get_object("messagingmenu_group_add");
         const cmb_add = builder.get_object("messagingmenu_cmb_add");
         const entry_add = builder.get_object("messagingmenu_row_add2");
@@ -179,10 +184,10 @@ export default class AdwPrefs extends ExtensionPreferences {
             entry_add.set_text(adwrow.title);
         }
         group_add.remove(adwrow);
-        this._addMenu(cmb_add, entry_add, builder);
+        this._addMenu(settings, cmb_add, entry_add, builder);
     }
 
-    _addScanRow(builder, app, cmbid) {
+    _addScanRow(builder, settings, app, cmbid) {
         const group_add = builder.get_object("messagingmenu_group_add");
         const adwrow = new Adw.ComboRow({
             title: app.get_id().slice(0, -8), // Remove .desktop suffix
@@ -202,7 +207,7 @@ export default class AdwPrefs extends ExtensionPreferences {
         const button_add = new Gtk.Button({ label: _("Add") });
         button_add.set_css_classes(["suggested-action"]);
         button_add.valign = Gtk.Align.CENTER;
-        button_add.connect("clicked", this._overtakeScanRow.bind(this, builder, adwrow));
+        button_add.connect("clicked", this._overtakeScanRow.bind(this, builder, settings, adwrow));
         adwrow.add_suffix(button_add);
     }
 
@@ -222,14 +227,14 @@ export default class AdwPrefs extends ExtensionPreferences {
             const settingsapp = app.get_id().slice(0, -8); // Remove .desktop suffix
             if (categories !== null && categories.includes("Email")) {
                 if (!compatibleemails.includes(settingsapp) && !compatiblehiddenemailnotifiers.includes(settingsapp)) {
-                    this._addScanRow(builder, app, 0);
+                    this._addScanRow(builder, settings, app, 0);
                     this.getLogger().log("Email app found:", app.get_id());
                     count += 1;
                 }
             }
             if (categories !== null && categories.includes("Chat")) {
                 if (!compatiblechats.includes(settingsapp)) {
-                    this._addScanRow(builder, app, 1);
+                    this._addScanRow(builder, settings, app, 1);
                     this.getLogger().log("Chat app found:", app.get_id());
                     count += 1;
                 }
@@ -252,6 +257,7 @@ export default class AdwPrefs extends ExtensionPreferences {
                 "notify-chat",
                 "notify-mblogging",
                 "color-rgba",
+                "wiggle-indicator",
             ];
             for (const key of keys) {
                 if (settings.is_writable(key)) {
@@ -272,9 +278,9 @@ export default class AdwPrefs extends ExtensionPreferences {
         settings.bind("notify-mblogging", mblogging_setting_switch, "active", Gio.SettingsBindFlags.DEFAULT);
         const color_setting_button = builder.get_object("color_setting_button");
         const mycolor = new Gdk.RGBA();
-        mycolor.parse(this.getSettings().get_string("color-rgba"));
+        mycolor.parse(settings.get_string("color-rgba"));
         color_setting_button.set_rgba(mycolor);
-        color_setting_button.connect("color-set", this._onColorChanged.bind(this, color_setting_button));
+        color_setting_button.connect("color-set", this._onColorChanged.bind(this, settings, color_setting_button));
         const rowwiggle = builder.get_object("messagingmenu_rowwiggle");
         settings.bind("wiggle-indicator", rowwiggle, "active", Gio.SettingsBindFlags.DEFAULT);
 
@@ -284,7 +290,7 @@ export default class AdwPrefs extends ExtensionPreferences {
         cmb_add.connect("notify", this._addMenuChangeDesc.bind(this, cmb_add, group_add));
         const button_add = builder.get_object("messagingmenu_row_buttonadd");
         const entry_add = builder.get_object("messagingmenu_row_add2");
-        button_add.connect("activated", this._addMenu.bind(this, cmb_add, entry_add, builder));
+        button_add.connect("activated", this._addMenu.bind(this, settings, cmb_add, entry_add, builder));
         const buttonfilechooser = builder.get_object("messagingmenu_row_buttonselectapp");
         buttonfilechooser.connect("activated", async () => {
             const errorLog = (...args) => {
@@ -349,6 +355,7 @@ export default class AdwPrefs extends ExtensionPreferences {
     }
 
     fillPreferencesWindow(window) {
+        window._settings = this.getSettings();
         window.search_enabled = true;
         window.set_default_size(675, 775);
         const builder = Gtk.Builder.new();
@@ -372,8 +379,8 @@ export default class AdwPrefs extends ExtensionPreferences {
         window.add(page4);
         const page5 = builder.get_object("messagingmenu_page_notifiers");
         window.add(page5);
-        this._addResetButton(window, this.getSettings());
-        this._page1(builder, this.getSettings(), myAppChooser);
-        this._pages(builder, this.getSettings());
+        this._addResetButton(window, window._settings);
+        this._page1(builder, window._settings, myAppChooser);
+        this._pages(builder, window._settings);
     }
 }
