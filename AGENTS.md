@@ -54,16 +54,6 @@ plus manual GNOME Shell testing where possible.
   metadata, schema, packaging, or user-data behavior that may affect
   extensions.gnome.org review.
 
-## Translations
-
-If a change adds, removes, or edits user-visible strings wrapped for translation, remind the user to run:
-
-```sh
-./messagingmenu.sh translate
-```
-
-Do not update translations automatically unless the user asks, because it may touch many `po/` files.
-
 ## Style
 
 - Follow `.editorconfig` and `.prettierrc`: spaces, LF, final newline, 4-space
@@ -75,30 +65,29 @@ Do not update translations automatically unless the user asks, because it may to
 - Avoid broad refactors in this repo. The extension is compact, and targeted
   changes are easier to verify across GNOME Shell versions.
 
-## Manual Testing Checklist
+## Validation Checklist
 
-When a change touches runtime behavior:
+Before finishing changes, run the validations that match the edit:
 
-1. Run `npm run lint`.
-2. Build with `./messagingmenu.sh zip`.
-3. Install with `./messagingmenu.sh install` on a GNOME Shell session when available.
-4. Restart GNOME Shell or log out/in if needed.
-5. Verify the indicator appears, the menu opens, settings opens, and notification
-   color/wiggle behavior still works for the affected app categories.
+- JavaScript changes: `npm run lint`.
+- Schema, metadata, packaging, icon, UI, or translation changes:
+  `./messagingmenu.sh zip`.
+- User-visible strings: `./messagingmenu.sh translate`, then review changes in
+  `po/messagingmenu.pot` and existing `.po` files. Do not hand-edit unrelated
+  translated strings.
+- Runtime behavior: install the extension with `./messagingmenu.sh install` in a
+  GNOME Shell session, restart GNOME Shell or log out and in if needed, and verify
+  that the indicator appears, the menu and settings open, and notification
+  color/wiggle behavior works for the affected app categories.
+- Preferences behavior: open the extension preferences from GNOME Extensions or
+  middle-click the panel indicator, then verify switches, color selection, app
+  add/select/scan flows, reset behavior, and list population.
+- Submission-oriented changes: use `$review-gnome-shell-extension` to check
+  lifecycle cleanup, process boundaries, metadata, schemas, privacy, licensing,
+  maintainability, and packaging requirements, including the ZIP contents.
 
-When a change touches preferences:
-
-1. Run `npm run lint`.
-2. Open the extension preferences from GNOME Extensions or middle-click the panel
-   indicator.
-3. Verify switches, color selection, app add/select/scan flows, reset behavior,
-   and list population.
-
-When a change touches translations:
-
-1. Run `./messagingmenu.sh translate`.
-2. Review changes in `po/messagingmenu.pot` and existing `.po` files.
-3. Do not hand-edit unrelated translated strings.
+If a required GNOME or gettext command is unavailable in the environment, state
+that clearly in the final response.
 
 ## Repository Hygiene
 
