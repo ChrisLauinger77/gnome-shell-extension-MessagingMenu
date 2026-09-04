@@ -76,6 +76,9 @@ update_version() {
 }
 
 case "${1:-}" in
+  install-dependencies)
+    npm ci
+    ;;
   cleanup)
     if [[ -f "$extensionfile" ]]; then
       rm -- "$extensionfile"
@@ -131,7 +134,7 @@ case "${1:-}" in
     echo "Done."
     ;;
   *)
-    echo "Usage: $0 {zip|pack|install|translate|upload|cleanup|check-version|update-version|setup-hooks}"
+    echo "Usage: $0 {install-dependencies|zip|pack|install|translate|upload|cleanup|check-version|update-version|setup-hooks}"
     exit 1
     ;;
 esac

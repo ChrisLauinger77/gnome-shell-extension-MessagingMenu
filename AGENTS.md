@@ -22,12 +22,16 @@ APIs over browser or Node patterns.
 - `messagingmenu.sh`: helper for packing, installing, uploading, and updating translations.
 - `.github/workflows/`: CI, release, and stale issue workflows.
 
-## Common Commands
+## Useful Commands
 
+- `./messagingmenu.sh install-dependencies`: install the locked JavaScript dependencies.
 - `npm run lint`: run ESLint across the repository.
 - `./messagingmenu.sh zip`: build `messagingmenu@lauinger-clan.de.shell-extension.zip`.
 - `./messagingmenu.sh install`: build if needed, install, and enable the extension locally.
 - `./messagingmenu.sh translate`: regenerate `po/messagingmenu.pot` and update existing `.po` files.
+
+Run `./messagingmenu.sh install-dependencies` after pulling or rebasing remote
+changes that modify `package-lock.json`, particularly Renovate updates.
 
 There is no useful automated test suite at the moment. `npm test` intentionally
 fails with the default placeholder script. For behavioral changes, use linting
