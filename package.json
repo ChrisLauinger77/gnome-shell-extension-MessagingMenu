@@ -1,33 +1,33 @@
 {
-  "name": "gnome-shell-extension-messagingmenu",
-  "version": "51.0.0",
-  "description": "A Messaging Menu for the Gnome Shell. All email, chat, and microblogging applications in one place.",
-  "main": "messagingmenu@lauinger-clan.de/extension.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint .",
-    "update-translations": "./update-translation-po-files.sh"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ChrisLauinger77/messagingmenu.git"
-  },
-  "keywords": [
-    "gnome-shell",
-    "extension",
-    "messaging",
-    "menu"
-  ],
-  "author": "Chris Lauinger",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/ChrisLauinger77/messagingmenu/issues"
-  },
-  "homepage": "https://github.com/ChrisLauinger77/messagingmenu#readme",
-  "devDependencies": {
-    "eslint": "^10.0.0",
-    "@eslint/js": "^10.0.0",
-    "@microsoft/eslint-formatter-sarif": "3.1.0"
-  },
-  "type": "module"
+    "name": "gnome-shell-extension-messagingmenu",
+    "version": "51.0.1",
+    "description": "A Messaging Menu for the Gnome Shell. All email, chat, and microblogging applications in one place.",
+    "main": "messagingmenu@lauinger-clan.de/extension.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "eslint .",
+        "update-translations": "./update-translation-po-files.sh"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ChrisLauinger77/messagingmenu.git"
+    },
+    "keywords": [
+        "gnome-shell",
+        "extension",
+        "messaging",
+        "menu"
+    ],
+    "author": "Chris Lauinger",
+    "license": "GPL-3.0",
+    "bugs": {
+        "url": "https://github.com/ChrisLauinger77/messagingmenu/issues"
+    },
+    "homepage": "https://github.com/ChrisLauinger77/messagingmenu#readme",
+    "devDependencies": {
+        "eslint": "^10.0.0",
+        "@eslint/js": "^10.0.0",
+        "@microsoft/eslint-formatter-sarif": "3.1.0"
+    },
+    "type": "module"
 }
