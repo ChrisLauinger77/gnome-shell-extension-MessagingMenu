@@ -63,29 +63,14 @@ const MessageMenu = GObject.registerClass(
             this._claws = null;
             this._evolution = null;
             this._geary = null;
+            this._letter = null;
+            this._stamp = null;
 
             const appsys = Shell.AppSystem.get_default();
             this._getAppsEMAIL(appsys);
             this._getAppsCHAT(appsys);
             this._getAppsBLOG(appsys);
-            if (this._evolution !== null) {
-                this._buildMenuEVOLUTION();
-            }
-            if (this._thunderbird !== null) {
-                this._buildMenuTHUNDERBIRD();
-            }
-            if (this._icedove !== null) {
-                this._buildMenuICEDOVE();
-            }
-            if (this._kmail !== null) {
-                this._buildMenuKMAIL();
-            }
-            if (this._claws !== null) {
-                this._buildMenuCLAWS();
-            }
-            if (this._geary !== null) {
-                this._buildMenuGEARY();
-            }
+            this._buildEmailMenus();
             this._buildMenu(this._extension);
             this._buttonClickGestures();
         }
@@ -137,75 +122,69 @@ const MessageMenu = GObject.registerClass(
             });
         }
 
-        _buildMenuEVOLUTION() {
-            const newLauncher = this.createMessageMenuItem(this._evolution);
-            this.menu.addMenuItem(newLauncher);
+        _addApplicationMenu(app, actions = []) {
+            if (app === null) {
+                return;
+            }
 
-            this.comp = this._createMessageMenuItemSpecial(this.new_msg_string, "mail-message-new-symbolic");
-            this.con = this._createMessageMenuItemSpecial(this.contacts_string, "contact-new-symbolic");
+            this.menu.addMenuItem(this.createMessageMenuItem(app));
 
-            this.con.connect("activate", this._evolutionContacts.bind(this));
-            this.comp.connect("activate", this._evolutionCompose.bind(this));
-            this.menu.addMenuItem(this.comp);
-            this.menu.addMenuItem(this.con);
+            for (const { label, iconName, activate } of actions) {
+                const item = this._createMessageMenuItemSpecial(label, iconName);
+                item.connect("activate", activate);
+                this.menu.addMenuItem(item);
+            }
         }
 
-        _buildMenuTHUNDERBIRD() {
-            const newLauncher = this.createMessageMenuItem(this._thunderbird);
-            this.menu.addMenuItem(newLauncher);
+        _buildEmailMenus() {
+            const compose = (activate) => ({
+                label: this.new_msg_string,
+                iconName: "mail-message-new-symbolic",
+                activate,
+            });
+            const contacts = (activate) => ({
+                label: this.contacts_string,
+                iconName: "contact-new-symbolic",
+                activate,
+            });
+            const menus = [
+                {
+                    app: this._evolution,
+                    actions: [compose(() => this._evolutionCompose()), contacts(() => this._evolutionContacts())],
+                },
+                {
+                    app: this._thunderbird,
+                    actions: [compose(() => this._thunderbirdCompose()), contacts(() => this._thunderbirdContacts())],
+                },
+                {
+                    app: this._icedove,
+                    actions: [compose(() => this._icedoveCompose()), contacts(() => this._icedoveContacts())],
+                },
+                {
+                    app: this._kmail,
+                    actions: [compose(() => this._kmailCompose())],
+                },
+                {
+                    app: this._claws,
+                    actions: [compose(() => this._clawsCompose())],
+                },
+                {
+                    app: this._geary,
+                    actions: [compose(() => this._gearyCompose())],
+                },
+                {
+                    app: this._letter,
+                    actions: [compose(() => this._letterCompose())],
+                },
+                {
+                    app: this._stamp,
+                    actions: [compose(() => this._stampCompose())],
+                },
+            ];
 
-            this.comp_tb = this._createMessageMenuItemSpecial(this.new_msg_string, "mail-message-new-symbolic");
-            this.con_tb = this._createMessageMenuItemSpecial(this.contacts_string, "contact-new-symbolic");
-
-            this.comp_tb.connect("activate", this._TbCompose.bind(this));
-            this.menu.addMenuItem(this.comp_tb);
-
-            this.con_tb.connect("activate", this._TbContacts.bind(this));
-            this.menu.addMenuItem(this.con_tb);
-        }
-
-        _buildMenuICEDOVE() {
-            const newLauncher = this.createMessageMenuItem(this._icedove);
-            this.menu.addMenuItem(newLauncher);
-
-            this.comp_icedove = this._createMessageMenuItemSpecial(this.new_msg_string, "mail-message-new-symbolic");
-            this.con_icedove = this._createMessageMenuItemSpecial(this.contacts_string, "contact-new-symbolic");
-
-            this.comp_icedove.connect("activate", this._icedoveCompose.bind(this));
-            this.menu.addMenuItem(this.comp_icedove);
-
-            this.con_icedove.connect("activate", this._icedoveContacts.bind(this));
-            this.menu.addMenuItem(this.con_icedove);
-        }
-
-        _buildMenuKMAIL() {
-            const newLauncher = this.createMessageMenuItem(this._kmail);
-            this.menu.addMenuItem(newLauncher);
-
-            this.comp = this._createMessageMenuItemSpecial(this.new_msg_string, "mail-message-new-symbolic");
-
-            this.comp.connect("activate", this._kmailCompose.bind(this));
-            this.menu.addMenuItem(this.comp);
-        }
-
-        _buildMenuCLAWS() {
-            const newLauncher = this.createMessageMenuItem(this._claws);
-            this.menu.addMenuItem(newLauncher);
-
-            this.comp = this._createMessageMenuItemSpecial(this.new_msg_string, "mail-message-new-symbolic");
-
-            this.comp.connect("activate", this._clawsCompose.bind(this));
-            this.menu.addMenuItem(this.comp);
-        }
-
-        _buildMenuGEARY() {
-            const newLauncher = this.createMessageMenuItem(this._geary);
-            this.menu.addMenuItem(newLauncher);
-
-            this.comp = this._createMessageMenuItemSpecial(this.new_msg_string, "mail-message-new-symbolic");
-
-            this.comp.connect("activate", this._gearyCompose.bind(this));
-            this.menu.addMenuItem(this.comp);
+            for (const { app, actions } of menus) {
+                this._addApplicationMenu(app, actions);
+            }
         }
 
         _buildMenu(extension) {
@@ -254,6 +233,10 @@ const MessageMenu = GObject.registerClass(
                         this._evolution = app;
                     } else if (app_name.toLowerCase().includes("geary")) {
                         this._geary = app;
+                    } else if (app_name.toLowerCase().includes("letter")) {
+                        this._letter = app;
+                    } else if (app_name.toLowerCase().includes("stamp")) {
+                        this._stamp = app;
                     } else {
                         this._availableEmails.push(app);
                     }
@@ -292,40 +275,64 @@ const MessageMenu = GObject.registerClass(
             }
         }
 
-        _TbCompose() {
-            Util.trySpawnCommandLine("thunderbird -compose");
+        _thunderbirdCompose() {
+            this._launchActionOrCommand(this._thunderbird, "ComposeMessage", "thunderbird -compose");
         }
 
-        _TbContacts() {
-            Util.trySpawnCommandLine("thunderbird -addressbook");
+        _thunderbirdContacts() {
+            this._launchActionOrCommand(this._thunderbird, "OpenAddressBook", "thunderbird -addressbook");
         }
 
         _icedoveCompose() {
-            Util.trySpawnCommandLine("icedove -compose");
+            this._launchActionOrCommand(this._icedove, "ComposeMessage", "icedove -compose");
         }
 
         _icedoveContacts() {
-            Util.trySpawnCommandLine("icedove -addressbook");
+            this._launchActionOrCommand(this._icedove, "OpenAddressBook", "icedove -addressbook");
         }
 
         _kmailCompose() {
-            Util.trySpawnCommandLine("kmail -compose");
+            this._launchActionOrCommand(this._kmail, "Composer", "kmail --composer");
         }
 
         _clawsCompose() {
-            Util.trySpawnCommandLine("claws-mail --compose");
+            this._launchActionOrCommand(this._claws, "ComposeMail", "claws-mail --compose");
         }
 
         _evolutionCompose() {
-            Util.trySpawnCommandLine("evolution mailto:");
+            this._launchActionOrCommand(this._evolution, "compose", "evolution mailto:");
         }
 
         _evolutionContacts() {
-            Util.trySpawnCommandLine("evolution -c contacts");
+            this._launchActionOrCommand(this._evolution, "contacts", "evolution -c contacts");
         }
 
         _gearyCompose() {
-            Util.trySpawnCommandLine("geary mailto:user@example.com");
+            this._launchActionOrCommand(this._geary, "compose", "geary mailto:user@example.com");
+        }
+
+        _letterCompose() {
+            const command = "flatpak run io.github.stalvatero.Letter --new-message";
+            this._launchActionOrCommand(this._letter, "new-message", command);
+        }
+
+        _stampCompose() {
+            this._launchActionOrCommand(this._stamp, "Compose", "stamp mailto:");
+        }
+
+        _launchActionOrCommand(app, action, command) {
+            if (app === null) {
+                return;
+            }
+
+            const appInfo = app.get_app_info();
+            const actions = appInfo === null ? [] : appInfo.list_actions();
+
+            if (actions.includes(action)) {
+                app.launch_action(action, 0, -1);
+            } else if (command) {
+                Util.trySpawnCommandLine(command);
+            }
         }
 
         animate() {
