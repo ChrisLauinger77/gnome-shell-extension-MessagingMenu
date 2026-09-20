@@ -61,6 +61,7 @@ const MessageMenu = GObject.registerClass(
             this._icedove = null;
             this._kmail = null;
             this._claws = null;
+            this._convey = null;
             this._evolution = null;
             this._geary = null;
             this._letter = null;
@@ -169,6 +170,10 @@ const MessageMenu = GObject.registerClass(
                     actions: [compose(() => this._clawsCompose())],
                 },
                 {
+                    app: this._convey,
+                    actions: [compose(() => this._conveyCompose())],
+                },
+                {
                     app: this._geary,
                     actions: [compose(() => this._gearyCompose())],
                 },
@@ -229,6 +234,8 @@ const MessageMenu = GObject.registerClass(
                         this._kmail = app;
                     } else if (app_name.toLowerCase().includes("claws")) {
                         this._claws = app;
+                    } else if (app_name.toLowerCase().includes("convey")) {
+                        this._convey = app;
                     } else if (app_name.toLowerCase().includes("evolution")) {
                         this._evolution = app;
                     } else if (app_name.toLowerCase().includes("geary")) {
@@ -297,6 +304,10 @@ const MessageMenu = GObject.registerClass(
 
         _clawsCompose() {
             this._launchActionOrCommand(this._claws, "ComposeMail", "claws-mail --compose");
+        }
+
+        _conveyCompose() {
+            this._launchActionOrCommand(this._convey, "compose", "convey mailto:");
         }
 
         _evolutionCompose() {
