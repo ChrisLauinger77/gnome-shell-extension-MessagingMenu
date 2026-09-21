@@ -232,7 +232,7 @@ export default class AdwPrefs extends ExtensionPreferences {
                     count += 1;
                 }
             }
-            if (categories !== null && categories.includes("Chat")) {
+            if (categories !== null && (categories.includes("Chat") || categories.includes("InstantMessaging"))) {
                 if (!compatiblechats.includes(settingsapp)) {
                     this._addScanRow(builder, settings, app, 1);
                     this.getLogger().log("Chat app found:", app.get_id());
