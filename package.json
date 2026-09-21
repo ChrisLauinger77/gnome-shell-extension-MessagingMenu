@@ -1,6 +1,6 @@
 {
     "name": "gnome-shell-extension-messagingmenu",
-    "version": "51.2.0",
+    "version": "51.3.0",
     "description": "A Messaging Menu for the Gnome Shell. All email, chat, and microblogging applications in one place.",
     "main": "messagingmenu@lauinger-clan.de/extension.js",
     "scripts": {
@@ -25,9 +25,9 @@
     },
     "homepage": "https://github.com/ChrisLauinger77/messagingmenu#readme",
     "devDependencies": {
-        "eslint": "^10.0.0",
         "@eslint/js": "^10.0.0",
-        "@microsoft/eslint-formatter-sarif": "3.1.0"
+        "@microsoft/eslint-formatter-sarif": "3.1.0",
+        "eslint": "^10.0.0"
     },
     "type": "module"
 }
