@@ -64,6 +64,7 @@ const MessageMenu = GObject.registerClass(
             this._convey = null;
             this._evolution = null;
             this._geary = null;
+            this._hylki = null;
             this._letter = null;
             this._stamp = null;
 
@@ -178,6 +179,10 @@ const MessageMenu = GObject.registerClass(
                     actions: [compose(() => this._gearyCompose())],
                 },
                 {
+                    app: this._hylki,
+                    actions: [compose(() => this._hylkiCompose())],
+                },
+                {
                     app: this._letter,
                     actions: [compose(() => this._letterCompose())],
                 },
@@ -240,6 +245,8 @@ const MessageMenu = GObject.registerClass(
                         this._evolution = app;
                     } else if (app_name.toLowerCase().includes("geary")) {
                         this._geary = app;
+                    } else if (app_name.toLowerCase().includes("hylki")) {
+                        this._hylki = app;
                     } else if (app_name.toLowerCase().includes("letter")) {
                         this._letter = app;
                     } else if (app_name.toLowerCase().includes("stamp")) {
@@ -320,6 +327,10 @@ const MessageMenu = GObject.registerClass(
 
         _gearyCompose() {
             this._launchActionOrCommand(this._geary, "compose", "geary mailto:user@example.com");
+        }
+
+        _hylkiCompose() {
+            this._launchActionOrCommand(this._hylki, "new-message", "hylki mailto:");
         }
 
         _letterCompose() {

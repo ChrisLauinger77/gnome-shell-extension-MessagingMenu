@@ -1,6 +1,6 @@
 {
     "name": "gnome-shell-extension-messagingmenu",
-    "version": "51.3.0",
+    "version": "51.4.0",
     "description": "A Messaging Menu for the Gnome Shell. All email, chat, and microblogging applications in one place.",
     "main": "messagingmenu@lauinger-clan.de/extension.js",
     "scripts": {
