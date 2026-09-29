@@ -7,11 +7,24 @@ import St from "gi://St";
 import Clutter from "gi://Clutter";
 
 import * as Main from "resource:///org/gnome/shell/ui/main.js";
-import * as Util from "resource:///org/gnome/shell/misc/util.js";
 import * as PanelMenu from "resource:///org/gnome/shell/ui/panelMenu.js";
 import * as PopupMenu from "resource:///org/gnome/shell/ui/popupMenu.js";
 import * as animationUtils from "resource:///org/gnome/shell/misc/animationUtils.js";
 import { Extension, gettext as _ } from "resource:///org/gnome/shell/extensions/extension.js";
+
+const EMAIL_ACTION_CANDIDATES = {
+    compose: [
+        "new-message",
+        "new_message",
+        "compose",
+        "ComposeMessage",
+        "ComposeMail",
+        "Composer",
+        "new-email",
+        "new-mail",
+    ],
+    contacts: ["contacts", "addressbook", "address-book", "OpenAddressBook", "open-address-book"],
+};
 
 const MessageMenu = GObject.registerClass(
     class MessageMenu_MessageMenu extends PanelMenu.Button {
@@ -49,24 +62,10 @@ const MessageMenu = GObject.registerClass(
             hbox.add_child(this._icon);
             this.add_child(hbox);
 
-            this.new_msg_string = _("Compose New Message");
-            this.contacts_string = _("Contacts");
-
             this._availableEmails = [];
             this._availableChats = [];
             this._availableMBlogs = [];
             this._availableNotifiers = [];
-
-            this._thunderbird = null;
-            this._icedove = null;
-            this._kmail = null;
-            this._claws = null;
-            this._convey = null;
-            this._evolution = null;
-            this._geary = null;
-            this._hylki = null;
-            this._letter = null;
-            this._stamp = null;
 
             const appsys = Shell.AppSystem.get_default();
             this._getAppsEMAIL(appsys);
@@ -139,69 +138,33 @@ const MessageMenu = GObject.registerClass(
         }
 
         _buildEmailMenus() {
-            const compose = (activate) => ({
-                label: this.new_msg_string,
-                iconName: "mail-message-new-symbolic",
-                activate,
-            });
-            const contacts = (activate) => ({
-                label: this.contacts_string,
-                iconName: "contact-new-symbolic",
-                activate,
-            });
-            const menus = [
-                {
-                    app: this._evolution,
-                    actions: [compose(() => this._evolutionCompose()), contacts(() => this._evolutionContacts())],
-                },
-                {
-                    app: this._thunderbird,
-                    actions: [compose(() => this._thunderbirdCompose()), contacts(() => this._thunderbirdContacts())],
-                },
-                {
-                    app: this._icedove,
-                    actions: [compose(() => this._icedoveCompose()), contacts(() => this._icedoveContacts())],
-                },
-                {
-                    app: this._kmail,
-                    actions: [compose(() => this._kmailCompose())],
-                },
-                {
-                    app: this._claws,
-                    actions: [compose(() => this._clawsCompose())],
-                },
-                {
-                    app: this._convey,
-                    actions: [compose(() => this._conveyCompose())],
-                },
-                {
-                    app: this._geary,
-                    actions: [compose(() => this._gearyCompose())],
-                },
-                {
-                    app: this._hylki,
-                    actions: [compose(() => this._hylkiCompose())],
-                },
-                {
-                    app: this._letter,
-                    actions: [compose(() => this._letterCompose())],
-                },
-                {
-                    app: this._stamp,
-                    actions: [compose(() => this._stampCompose())],
-                },
-            ];
+            for (const app of this._availableEmails) {
+                const capabilities = this._getEmailCapabilities(app);
+                const actions = [];
 
-            for (const { app, actions } of menus) {
+                if (capabilities.compose !== null) {
+                    const actionId = capabilities.compose;
+                    actions.push({
+                        label: _("Compose New Message"),
+                        iconName: "mail-message-new-symbolic",
+                        activate: () => this._launchDesktopAction(app, actionId),
+                    });
+                }
+
+                if (capabilities.contacts !== null) {
+                    const actionId = capabilities.contacts;
+                    actions.push({
+                        label: _("Contacts"),
+                        iconName: "contact-new-symbolic",
+                        activate: () => this._launchDesktopAction(app, actionId),
+                    });
+                }
+
                 this._addApplicationMenu(app, actions);
             }
         }
 
         _buildMenu(extension) {
-            for (const e_app of this._availableEmails) {
-                const newLauncher = this.createMessageMenuItem(e_app);
-                this.menu.addMenuItem(newLauncher);
-            }
             this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
 
             // insert Chat Clients into menu
@@ -227,33 +190,18 @@ const MessageMenu = GObject.registerClass(
 
         _getAppsEMAIL(appsys) {
             //get available Email Apps
+            const seenAppIds = new Set();
+
             for (const app_name of this._compatible_Emails) {
                 const app = appsys.lookup_app(app_name + ".desktop");
                 if (app !== null) {
-                    // filter Apps with special Menus
-                    if (app_name.toLowerCase().includes("thunderbird")) {
-                        this._thunderbird = app;
-                    } else if (app_name.toLowerCase().includes("icedove")) {
-                        this._icedove = app;
-                    } else if (app_name.toLowerCase().includes("kmail")) {
-                        this._kmail = app;
-                    } else if (app_name.toLowerCase().includes("claws")) {
-                        this._claws = app;
-                    } else if (app_name.toLowerCase().includes("convey")) {
-                        this._convey = app;
-                    } else if (app_name.toLowerCase().includes("evolution")) {
-                        this._evolution = app;
-                    } else if (app_name.toLowerCase().includes("geary")) {
-                        this._geary = app;
-                    } else if (app_name.toLowerCase().includes("hylki")) {
-                        this._hylki = app;
-                    } else if (app_name.toLowerCase().includes("letter")) {
-                        this._letter = app;
-                    } else if (app_name.toLowerCase().includes("stamp")) {
-                        this._stamp = app;
-                    } else {
-                        this._availableEmails.push(app);
+                    const appId = app.get_id();
+                    if (seenAppIds.has(appId)) {
+                        continue;
                     }
+
+                    seenAppIds.add(appId);
+                    this._availableEmails.push(app);
                     if (this._settings.get_boolean("notify-email")) {
                         this._availableNotifiers.push(app);
                     }
@@ -289,60 +237,30 @@ const MessageMenu = GObject.registerClass(
             }
         }
 
-        _thunderbirdCompose() {
-            this._launchActionOrCommand(this._thunderbird, "ComposeMessage", "thunderbird -compose");
+        _normalizeDesktopActionId(actionId) {
+            return actionId.toLowerCase().replace(/[^a-z0-9]/g, "");
         }
 
-        _thunderbirdContacts() {
-            this._launchActionOrCommand(this._thunderbird, "OpenAddressBook", "thunderbird -addressbook");
+        _findDesktopAction(actions, candidates) {
+            const normalizedCandidates = new Set(
+                candidates.map((candidate) => this._normalizeDesktopActionId(candidate))
+            );
+            return (
+                actions.find((actionId) => normalizedCandidates.has(this._normalizeDesktopActionId(actionId))) ?? null
+            );
         }
 
-        _icedoveCompose() {
-            this._launchActionOrCommand(this._icedove, "ComposeMessage", "icedove -compose");
+        _getEmailCapabilities(app) {
+            const appInfo = app.get_app_info();
+            const actions = appInfo === null ? [] : appInfo.list_actions();
+
+            return {
+                compose: this._findDesktopAction(actions, EMAIL_ACTION_CANDIDATES.compose),
+                contacts: this._findDesktopAction(actions, EMAIL_ACTION_CANDIDATES.contacts),
+            };
         }
 
-        _icedoveContacts() {
-            this._launchActionOrCommand(this._icedove, "OpenAddressBook", "icedove -addressbook");
-        }
-
-        _kmailCompose() {
-            this._launchActionOrCommand(this._kmail, "Composer", "kmail --composer");
-        }
-
-        _clawsCompose() {
-            this._launchActionOrCommand(this._claws, "ComposeMail", "claws-mail --compose");
-        }
-
-        _conveyCompose() {
-            this._launchActionOrCommand(this._convey, "compose", "convey mailto:");
-        }
-
-        _evolutionCompose() {
-            this._launchActionOrCommand(this._evolution, "compose", "evolution mailto:");
-        }
-
-        _evolutionContacts() {
-            this._launchActionOrCommand(this._evolution, "contacts", "evolution -c contacts");
-        }
-
-        _gearyCompose() {
-            this._launchActionOrCommand(this._geary, "compose", "geary mailto:user@example.com");
-        }
-
-        _hylkiCompose() {
-            this._launchActionOrCommand(this._hylki, "new-message", "hylki mailto:");
-        }
-
-        _letterCompose() {
-            const command = "flatpak run io.github.stalvatero.Letter --new-message";
-            this._launchActionOrCommand(this._letter, "new-message", command);
-        }
-
-        _stampCompose() {
-            this._launchActionOrCommand(this._stamp, "Compose", "stamp mailto:");
-        }
-
-        _launchActionOrCommand(app, action, command) {
+        _launchDesktopAction(app, actionId) {
             if (app === null) {
                 return;
             }
@@ -350,10 +268,8 @@ const MessageMenu = GObject.registerClass(
             const appInfo = app.get_app_info();
             const actions = appInfo === null ? [] : appInfo.list_actions();
 
-            if (actions.includes(action)) {
-                app.launch_action(action, 0, -1);
-            } else if (command) {
-                Util.trySpawnCommandLine(command);
+            if (actions.includes(actionId)) {
+                app.launch_action(actionId, 0, -1);
             }
         }
 
