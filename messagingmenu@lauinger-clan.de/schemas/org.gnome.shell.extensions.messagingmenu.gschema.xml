@@ -41,7 +41,7 @@
       <description>Case sensitive name of the .desktop file names to start the app (without .desktop ending) delimited by semicolon</description>
     </key>
     <key name="compatible-emails" type="s">
-      <default>'org.desktop.Balsa;se.mnorlin.brev;claws-mail;net.donnybeelo.Convey;app.drey.Envelope;com.github.matzipan.envoyer;evolution;org.gnome.Evolution;geary;org.gnome.Geary;gnome-gmail;co.hyprlab.Hylki;icedove;org.kde.kmail2;io.github.stalvatero.Letter;io.github.gavindi.Lookout;mozilla-thunderbird;io.github.mbrennwa.Post;in.gxanshu.postcard;postler;org.tabos.stamp;org.mozilla.Thunderbird;thunderbird;org.mozilla.thunderbird_esr'</default>
+      <default>'org.desktop.Balsa;se.mnorlin.brev;claws-mail;net.donnybeelo.Convey;app.drey.Envelope;com.github.matzipan.envoyer;evolution;org.gnome.Evolution;geary;org.gnome.Geary;gnome-gmail;co.hyprlab.Hylki;icedove;eu.libormacak.Klient;org.kde.kmail2;io.github.stalvatero.Letter;io.github.gavindi.Lookout;mozilla-thunderbird;io.github.mbrennwa.Post;in.gxanshu.postcard;postler;org.tabos.stamp;org.mozilla.Thunderbird;thunderbird;org.mozilla.thunderbird_esr'</default>
       <summary>Compatible Emails</summary>
       <description>Case sensitive name of the .desktop file names to start the app (without .desktop ending) delimited by semicolon</description>
     </key>
