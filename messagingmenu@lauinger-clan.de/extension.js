@@ -24,6 +24,8 @@ const EMAIL_ACTION_CANDIDATES = {
         "new-mail",
     ],
     contacts: ["contacts", "addressbook", "address-book", "OpenAddressBook", "open-address-book"],
+    calendar: ["calendar"],
+    tasks: ["tasks"],
 };
 
 const MessageMenu = GObject.registerClass(
@@ -160,6 +162,24 @@ const MessageMenu = GObject.registerClass(
                     });
                 }
 
+                if (capabilities.calendar !== null) {
+                    const actionId = capabilities.calendar;
+                    actions.push({
+                        label: _("Calendar"),
+                        iconName: "x-office-calendar-symbolic",
+                        activate: () => this._launchDesktopAction(app, actionId),
+                    });
+                }
+
+                if (capabilities.tasks !== null) {
+                    const actionId = capabilities.tasks;
+                    actions.push({
+                        label: _("Tasks"),
+                        iconName: "view-list-symbolic",
+                        activate: () => this._launchDesktopAction(app, actionId),
+                    });
+                }
+
                 this._addApplicationMenu(app, actions);
             }
         }
@@ -257,6 +277,8 @@ const MessageMenu = GObject.registerClass(
             return {
                 compose: this._findDesktopAction(actions, EMAIL_ACTION_CANDIDATES.compose),
                 contacts: this._findDesktopAction(actions, EMAIL_ACTION_CANDIDATES.contacts),
+                calendar: this._findDesktopAction(actions, EMAIL_ACTION_CANDIDATES.calendar),
+                tasks: this._findDesktopAction(actions, EMAIL_ACTION_CANDIDATES.tasks),
             };
         }
 
