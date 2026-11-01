@@ -4,3 +4,4 @@ gschemas.compiled
 *.mo
 *.po~
 node_modules
+.DS_Store
