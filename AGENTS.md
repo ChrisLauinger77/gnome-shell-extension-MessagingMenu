@@ -20,7 +20,8 @@ APIs over browser or Node patterns.
 - `messagingmenu@lauinger-clan.de/ui/prefs.ui`: GtkBuilder UI for preferences.
 - `po/`: gettext template and translations.
 - `messagingmenu.sh`: helper for packing, installing, uploading, and updating translations.
-- `.github/workflows/`: CI, release, and stale issue workflows.
+- `.github/workflows/`: CI (ESLint and Shexli), release, stale issue, and `@claude` mention workflows.
+- `.githooks/`: optional version-consistency Git hooks, enabled with `./messagingmenu.sh setup-hooks`.
 
 ## Useful Commands
 
@@ -29,6 +30,13 @@ APIs over browser or Node patterns.
 - `./messagingmenu.sh zip`: build `messagingmenu@lauinger-clan.de.shell-extension.zip`.
 - `./messagingmenu.sh install`: build if needed, install, and enable the extension locally.
 - `./messagingmenu.sh translate`: regenerate `po/messagingmenu.pot` and update existing `.po` files.
+- `./messagingmenu.sh cleanup`: remove the generated extension zip.
+- `./messagingmenu.sh check-version`: verify that `package.json` `version` matches
+  `metadata.json` `version-name` (requires `jq`; also run in CI).
+- `./messagingmenu.sh update-version`: sync `package.json` and `package-lock.json`
+  to `metadata.json` `version-name`.
+- `./messagingmenu.sh setup-hooks`: enable the Git hooks in `.githooks/`, which
+  block commits with mismatched versions and resync versions after merges and rebases.
 
 Run `./messagingmenu.sh install-dependencies` after pulling or rebasing remote
 changes that modify `package-lock.json`, particularly Renovate updates.

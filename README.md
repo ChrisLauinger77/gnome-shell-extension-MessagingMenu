@@ -12,13 +12,16 @@ applications in one place.
 ![Messaging Menu screenshot](menu_screenshot.png)
 
 This extension provides a convenience list of all installed email, chat and
-microblogging applications with short cut actions like "Contacts" and "Compose
-New Message" for email applications. The icon lights up when you receive
-notifications from the listed applications, so you won't miss another message.
+microblogging applications with short cut actions like "Compose New Message",
+"Contacts", "Calendar" and "Tasks" for email applications that provide them.
+The icon lights up when you receive notifications from the listed applications,
+so you won't miss another message.
 
 The extension's preferences allow you to configure which types of applications
 (email / chat / microblogging) you would like to receive notifications for and
-which colour the icon should change to, to indicate notification.
+which colour the icon should change to, to indicate notification. The icon can
+also wiggle when a notification arrives. Middle-click the panel icon to open the
+preferences.
 
 Read [here](http://screenfreeze.net/messaging-menu-for-gnome-3/) for why this
 extension was created.
@@ -33,9 +36,9 @@ Originally forked from https://github.com/screenfreeze/messagingmenu
 
 ### Download latest release
 
-1. Download the zip file from the [release page](https://github.com/ChrisLauinger77/messagingmenu/releases/latest)
-2. The md5 and sig files can be used to verify the integrity of the zip file
-3. Unzip and run messagingmenu.sh from the zip
+1. Download the zip file from the [release page](https://github.com/ChrisLauinger77/gnome-shell-extension-messagingmenu/releases/latest)
+2. Install it with `gnome-extensions install --force messagingmenu@lauinger-clan.de.shell-extension.zip`
+3. Restart GNOME Shell (log out and in on Wayland), then enable it with `gnome-extensions enable messagingmenu@lauinger-clan.de`
 
 ### Install from source
 
@@ -47,14 +50,14 @@ cd gnome-shell-extension-messagingmenu
 ./messagingmenu.sh install
 ```
 
-Now restart gnome-shell.
+Now restart GNOME Shell (log out and in on Wayland).
 
 ## Contributing
 
 Pull requests are welcome.
 
-To update the translation files run `./messagingmenu.sh translate ` in the extensions directory after your code changes are finished. This will update the files in po folder. Then [Poedit](https://poedit.net/download) can be used to translate the strings. poedit can also be used to create new localization files.
+To update the translation files run `./messagingmenu.sh translate` in the extensions directory after your code changes are finished. This will update the files in po folder. Then [Poedit](https://poedit.net/download) can be used to translate the strings. poedit can also be used to create new localization files.
 
 # ✨️ Contributors
 
-[![Contributors](https://contrib.rocks/image?repo=ChrisLauinger77/messagingmenu)](https://github.com/ChrisLauinger77/messagingmenu/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=ChrisLauinger77/gnome-shell-extension-messagingmenu)](https://github.com/ChrisLauinger77/gnome-shell-extension-messagingmenu/graphs/contributors)
