@@ -11,6 +11,13 @@ changes the indicator state when matching notifications are present.
 The code is a small GJS/GTK project, not a web app. Prefer GNOME Shell and GJS
 APIs over browser or Node patterns.
 
+The GNOME Shell compatibility badge in `README.md` lists every GNOME Shell major
+version supported by any Messaging Menu release. It currently covers GNOME 3.34
+through 51 inclusive. The `shell-version` field in
+`messagingmenu@lauinger-clan.de/metadata.json` covers only the current extension
+release. When updating the README badge, include GNOME versions that older
+extension releases support, even if the current `shell-version` list omits them.
+
 ## Important Paths
 
 - `messagingmenu@lauinger-clan.de/extension.js`: runtime GNOME Shell extension.
