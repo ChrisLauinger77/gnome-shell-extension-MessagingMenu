@@ -13,9 +13,9 @@ applications in one place.
 
 This extension provides a convenience list of all installed email, chat and
 microblogging applications with short cut actions like "Compose New Message",
-"Contacts", "Calendar" and "Tasks" for email applications that provide them.
-The icon lights up when you receive notifications from the listed applications,
-so you won't miss another message.
+"Contacts", "Calendar", "Tasks" and "Attachments" for email applications that
+provide them. The icon lights up when you receive notifications from the listed
+applications, so you won't miss another message.
 
 The extension's preferences allow you to configure which types of applications
 (email / chat / microblogging) you would like to receive notifications for and
