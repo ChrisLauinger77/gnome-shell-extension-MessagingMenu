@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Messaging Menu Version 4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-02 22:34+0200\n"
+"POT-Creation-Date: 2026-11-10 18:39+0100\n"
 "PO-Revision-Date: 2025-06-01 19:26+0200\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: Polish\n"
@@ -20,23 +20,27 @@ msgstr ""
 "X-Generator: Poedit 3.6\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: messagingmenu@lauinger-clan.de/extension.js:150
+#: messagingmenu@lauinger-clan.de/extension.js:151
 msgid "Compose New Message"
 msgstr "Napisz nową wiadomość"
 
-#: messagingmenu@lauinger-clan.de/extension.js:159
+#: messagingmenu@lauinger-clan.de/extension.js:160
 msgid "Contacts"
 msgstr "Kontakty"
 
-#: messagingmenu@lauinger-clan.de/extension.js:168
+#: messagingmenu@lauinger-clan.de/extension.js:169
 msgid "Calendar"
 msgstr "Kalendarz"
 
-#: messagingmenu@lauinger-clan.de/extension.js:177
+#: messagingmenu@lauinger-clan.de/extension.js:178
 msgid "Tasks"
 msgstr "Zadania"
 
-#: messagingmenu@lauinger-clan.de/extension.js:205
+#: messagingmenu@lauinger-clan.de/extension.js:187
+msgid "Attachments"
+msgstr ""
+
+#: messagingmenu@lauinger-clan.de/extension.js:215
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:5
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:9
 msgid "Settings"

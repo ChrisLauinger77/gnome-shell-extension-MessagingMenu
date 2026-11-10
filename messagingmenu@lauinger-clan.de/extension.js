@@ -26,6 +26,7 @@ const EMAIL_ACTION_CANDIDATES = {
     contacts: ["contacts", "addressbook", "address-book", "OpenAddressBook", "open-address-book"],
     calendar: ["calendar"],
     tasks: ["tasks"],
+    attachments: ["attachments"],
 };
 
 const MessageMenu = GObject.registerClass(
@@ -180,6 +181,15 @@ const MessageMenu = GObject.registerClass(
                     });
                 }
 
+                if (capabilities.attachments !== null) {
+                    const actionId = capabilities.attachments;
+                    actions.push({
+                        label: _("Attachments"),
+                        iconName: "mail-attachment-symbolic",
+                        activate: () => this._launchDesktopAction(app, actionId),
+                    });
+                }
+
                 this._addApplicationMenu(app, actions);
             }
         }
@@ -279,6 +289,7 @@ const MessageMenu = GObject.registerClass(
                 contacts: this._findDesktopAction(actions, EMAIL_ACTION_CANDIDATES.contacts),
                 calendar: this._findDesktopAction(actions, EMAIL_ACTION_CANDIDATES.calendar),
                 tasks: this._findDesktopAction(actions, EMAIL_ACTION_CANDIDATES.tasks),
+                attachments: this._findDesktopAction(actions, EMAIL_ACTION_CANDIDATES.attachments),
             };
         }
 
