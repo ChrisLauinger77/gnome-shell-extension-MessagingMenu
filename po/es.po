@@ -36,7 +36,7 @@ msgstr "Tareas"
 
 #: messagingmenu@lauinger-clan.de/extension.js:187
 msgid "Attachments"
-msgstr ""
+msgstr "Adjuntos"
 
 #: messagingmenu@lauinger-clan.de/extension.js:215
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:5
