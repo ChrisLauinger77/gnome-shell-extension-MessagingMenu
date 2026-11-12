@@ -36,7 +36,7 @@ msgstr "Take"
 
 #: messagingmenu@lauinger-clan.de/extension.js:187
 msgid "Attachments"
-msgstr ""
+msgstr "Aanhegsels"
 
 #: messagingmenu@lauinger-clan.de/extension.js:215
 #: messagingmenu@lauinger-clan.de/ui/prefs.ui:5
