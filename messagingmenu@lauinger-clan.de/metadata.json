@@ -8,6 +8,7 @@
     "url": "https://github.com/ChrisLauinger77/gnome-shell-extension-messagingmenu",
     "settings-schema": "org.gnome.shell.extensions.messagingmenu",
     "donations": {
+        "buymeacoffee": "christianlz",
         "github": "ChrisLauinger77",
         "kofi": "ChrisLauinger77",
         "paypal": "ChrisLauinger"
